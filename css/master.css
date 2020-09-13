@@ -1,15 +1,13 @@
-/* Cascading stylesheet for the website */
 
-/* Text inside these asterisks and slashes are comments for human */
 
   a {
-    color: blue; /* set the text color to blue here */
-    text-decoration: none; /* This means we do not want hyperlinks to be underlined */
+    color: blue; 
+    text-decoration: none;
   }
 
   a:hover {
-    color: red; /* set the text color to red here */
-    text-decoration: none; /* This means we do not want hyperlinks to be underlined */
+    color: red;
+    text-decoration: none;
   }
 
   body {
