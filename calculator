@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Molarity Calculator</title>
+    <script>
+        function calculateMolarity() {
+            var molecules = parseFloat(document.getElementById("molecules").value);
+            var volume = parseFloat(document.getElementById("volume").value);
+            var avogadro = 6.022e23;
+
+            var moles = molecules / avogadro;
+            var liters = volume * 1e-27;
+            var molarity = moles / liters;
+
+            document.getElementById("result").innerHTML = "Molarity: " + molarity.toFixed(4) + " M";
+        }
+    </script>
+</head>
+<body>
+    <h1>Molarity Calculator</h1>
+    <label for="molecules">Number of Molecules:</label>
+    <input type="text" id="molecules"><br><br>
+    <label for="volume">Volume of Water (nm^3):</label>
+    <input type="text" id="volume"><br><br>
+    <button onclick="calculateMolarity()">Calculate Molarity</button><br><br>
+    <div id="result"></div>
+</body>
+</html>
