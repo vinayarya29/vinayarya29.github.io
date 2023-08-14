@@ -5,7 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Name - Personal Website</title>
     <style>
-        /* Your existing styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
 
         .navbar {
             background-color: #333;
@@ -19,16 +24,67 @@
             text-align: center;
             padding: 14px 16px;
             text-decoration: none;
+            transition: background-color 0.3s ease;
         }
 
         .navbar a:hover {
+            background-color: #555;
+        }
+
+        .header {
+            text-align: center;
+            padding: 10vh 0;
+            color: #333;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .header p {
+            font-size: 1.5rem;
+            color: #777;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .hero-text {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .subtext {
+            font-size: 1.2rem;
+            color: #777;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
             background-color: #555;
         }
     </style>
 </head>
 <body>
     <div class="navbar">
-        <a href="https://vinayarya29.github.io">Home</a>
+        <a href="https://vinayarya.in">Home</a>
         <a href="#portfolio">Portfolio</a>
         <a href="#publications">Publications</a>
         <a href="#contact">Contact</a>
