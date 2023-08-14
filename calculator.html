@@ -1,52 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Calculator</title>
-<link rel="stylesheet" href="css/master.css">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-}
-
-/* Style the header */
-.header {
-  background-color: #f1f1f1;
-  padding: 20px;
-  text-align: center;
-}
-<style>
-* {
-  box-sizing: border-box;
-}
-<head>
-    <title>Molarity Calculator</title>
-    <script>
-        function calculateMolarity() {
-            var molecules = parseFloat(document.getElementById("molecules").value);
-            var volume = parseFloat(document.getElementById("volume").value);
-            var avogadro = 6.022e23;
-
-            var moles = molecules / avogadro;
-            var liters = volume * 1e-27;
-            var molarity = moles / liters;
-
-            document.getElementById("result").innerHTML = "Molarity: " + molarity.toFixed(4) + " M";
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Personal Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
         }
-    </script>
+
+        .header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .hero-text {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .subtext {
+            font-size: 1.2rem;
+            color: #777;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #555;
+        }
+    </style>
 </head>
 <body>
-    <h1>Molarity Calculator</h1>
-    <label for="molecules">Number of Molecules:</label>
-    <input type="text" id="molecules"><br><br>
-    <label for="volume">Volume of Water (nm^3):</label>
-    <input type="text" id="volume"><br><br>
-    <button onclick="calculateMolarity()">Calculate Molarity</button><br><br>
-    <div id="result"></div>
+    <div class="header">
+        <h1>Your Name</h1>
+        <p>Welcome to my personal website</p>
+    </div>
+    <div class="container">
+        <div class="hero-text">
+            Hello, I'm Your Name
+        </div>
+        <div class="subtext">
+            I'm a passionate web developer and designer.
+        </div>
+        <a href="#portfolio" class="cta-button">View My Work</a>
+    </div>
 </body>
 </html>
