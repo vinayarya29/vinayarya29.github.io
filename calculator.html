@@ -2,56 +2,57 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>James Sprittles - Personal Website</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f7f7f7;
-        }
-
-        .navbar {
-            background-color: #333;
-            overflow: hidden;
-        }
-
-        .navbar a {
-            float: left;
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-        }
-
-        .navbar a:hover {
-            background-color: #555;
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <!-- Additional CSS and script links -->
+    <title>JabTV Landing Page</title>
 </head>
 <body>
-    <div class="navbar">
-        <a href="#latest-posts">Latest Posts</a>
-        <a href="#phd-studentship">PhD Studentship</a>
-        <a href="#research">Research</a>
-        <!-- Add more links as needed -->
-    </div>
-    <!-- Rest of your content goes here -->
-    <div class="header">
-        <h1>Your Name</h1>
-        <p>Welcome to my personal website</p>
-    </div>
-    <div class="container">
-        <div class="hero-text">
-            Hello, I'm Your Name
+    <!-- Navbar -->
+    <nav>
+        <a href="#" class="logo">
+            <h1>
+                <span class="jab">Jab</span><span class="tv">TV</span
+                ><span class="fist">&#x1F44A;</span>
+            </h1>
+        </a>
+        <ul>
+            <li class="nav-item"><a href="#about" class="nav-link" id="nav-link">About</a></li>
+            <li class="nav-item"><a href="#stars" class="nav-link" id="nav-link">Boxing Stars</a></li>
+            <li class="nav-item"><a href="#stakeholders" class="nav-link" id="nav-link">Stakeholders</a></li>
+            <li class="nav-item"><a href="#sub" class="nav-link" id="nav-link">Subscribe</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
         </div>
-        <div class="subtext">
-            I'm a passionate web developer and designer.
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h2>Welcome to JabTV</h2>
+            <p>Your Ultimate Boxing Experience</p>
+            <div class="cta-buttons">
+                <a href="#sub" class="cta-button">Subscribe Now</a>
+                <a href="#about" class="cta-button">Learn More</a>
+            </div>
         </div>
-        <a href="#portfolio" class="cta-button">View My Work</a>
-    </div>
+        <div class="tv-frame">
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- Additional Sections -->
+    <!-- You can add more sections following the tutorial -->
+
+    <!-- Footer Section -->
+    <footer class="footer" id="footer">
+        <p>&copy; 2023 Vinay Arya. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript and other script links -->
 </body>
 </html>
