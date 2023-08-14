@@ -11,28 +11,37 @@
     padding: 0;
   }
 
-  /* Styling for the banner */
+  /* Styling for the banner image */
   .banner {
-    background-color: #222;
-    color: white;
+    position: relative;
+    background-image: url('your-banner-image.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 300px;
     text-align: center;
-    padding: 10px;
-  }
-  
- /* Styling for your name */
-  .name {
-    font-size: 1.5rem;
-    margin-left: 20px;
+    color: white;
+    padding: 50px;
   }
 
   /* Basic styling for the navigation bar */
   nav {
-    background-color: #333;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
     color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     height: 60px;
+    padding: 0 20px;
+    z-index: 1; /* Ensure the navigation bar is on top */
+  }
+
+  /* Styling for your name */
+  .name {
+    font-size: 1.5rem;
   }
 
   /* Styling for navigation links */
@@ -74,11 +83,11 @@
 </style>
 </head>
 <body>
-  <div class="banner">
+<div class="banner">
   <h1>Welcome to My Website</h1>
 </div>
-    <nav>
-  <span class="name">Vinay Arya</span>
+<nav>
+  <span class="name">Your Name</span>
   <a href="#" class="active">Home</a>
   <a href="#">About</a>
   <div class="dropdown">
@@ -91,13 +100,5 @@
   </div>
   <a href="#">Contact</a>
 </nav>
-
-   
-    <!-- Footer Section -->
-    <footer class="footer" id="footer">
-        <p>&copy; 2023 Vinay Arya. All rights reserved.</p>
-    </footer>
-
-    <!-- JavaScript and other script links -->
 </body>
 </html>
