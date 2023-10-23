@@ -1931,7 +1931,7 @@ input, select, textarea {
 			text-transform: uppercase;
 			font-weight: 400;
 			color: #888;
-			margin: 2.5em 0 0 0;
+			margin: 2em 0 0 0;
 			font-size: 0.85em;
 			letter-spacing: 3px;
 			text-align: center;
@@ -1941,7 +1941,7 @@ input, select, textarea {
 
 	#nav {
 		position: absolute;
-		top: 3em;
+		top: 1em;
 		left: 0;
 		width: 100%;
 		cursor: default;
@@ -2277,7 +2277,7 @@ input, select, textarea {
 		/* Header */
 
 			#header > .container {
-				padding: 12em 0 5em 0;
+				padding: 7em 0 1em 0;
 			}
 
 			#header h1 {
@@ -2299,7 +2299,7 @@ input, select, textarea {
 		/* Banner */
 
 			#banner {
-				padding: 8em 0;
+				padding: 10em 0;
 			}
 
 				#banner > .container {
@@ -2313,7 +2313,7 @@ input, select, textarea {
 		/* Main */
 
 			#main {
-				padding: 4em 0;
+				padding: 2em 0;
 			}
 
 		/* Footer */
