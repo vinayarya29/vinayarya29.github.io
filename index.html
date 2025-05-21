@@ -60,6 +60,25 @@
         .nav-active {
             background-color: rgba(255, 255, 255, 0.3);
         }
+        .publication-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #E5E7EB; /* Light gray border */
+        }
+        .publication-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .publication-year {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0077B6; /* Primary */
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #00B4D8; /* Secondary */
+            padding-bottom: 0.5rem;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -97,28 +116,28 @@
                 
                 <article class="mb-8 pb-8 border-b border-gray-200 last:border-b-0">
                     <h4 class="text-xl font-semibold text-dark-text mb-2">
-                        <a href="#" class="hover:underline">Significantly Reduced Thermal Conductivity and Enhanced Thermoelectric Performance of Twisted Bilayer Graphene</a>
+                        <a href="https://doi.org/10.1063/5.0153052" target="_blank" class="hover:underline">Significantly Reduced Thermal Conductivity and Enhanced Thermoelectric Performance of Twisted Bilayer Graphene</a>
                     </h4>
                     <p class="text-sm italic text-gray-600 mb-3">Published: July 2023</p>
                     <p class="text-dark-text mb-4">
                         This research explores novel approaches to manipulate thermal transport in 2D materials, demonstrating how twisting graphene layers can lead to significant reductions in thermal conductivity. This work opens new avenues for designing high-efficiency thermoelectric devices and advanced thermal management solutions.
                     </p>
                     <div class="flex space-x-4">
-                        <a href="#" class="btn-primary flex items-center"><i class="fas fa-link mr-2"></i>View Publication</a>
+                        <a href="https://doi.org/10.1063/5.0153052" target="_blank" class="btn-primary flex items-center"><i class="fas fa-link mr-2"></i>View Publication</a>
                         <a href="research/MD.html" class="btn-primary flex items-center"><i class="fas fa-flask mr-2"></i>Explore Project</a>
                     </div>
                 </article>
 
                 <article class="mb-8 pb-8 border-b border-gray-200 last:border-b-0">
                     <h4 class="text-xl font-semibold text-dark-text mb-2">
-                        <a href="#" class="hover:underline">Mapping Fluid Structuration to Flow Enhancement in Nanofluidic Channels</a>
+                        <a href="http://dx.doi.org/10.1063/5.0140765" target="_blank" class="hover:underline">Mapping Fluid Structuration to Flow Enhancement in Nanofluidic Channels</a>
                     </h4>
                     <p class="text-sm italic text-gray-600 mb-3">Published: May 2023</p>
                     <p class="text-dark-text mb-4">
                         Our study delves into the fundamental mechanisms governing fluid behavior at the nanoscale, revealing how molecular ordering within nanofluidic channels can dramatically enhance flow rates. These findings have significant implications for advanced filtration, energy harvesting, and microfluidic device design.
                     </p>
                     <div class="flex space-x-4">
-                        <a href="#" class="btn-primary flex items-center"><i class="fas fa-link mr-2"></i>View Publication</a>
+                        <a href="http://dx.doi.org/10.1063/5.0140765" target="_blank" class="btn-primary flex items-center"><i class="fas fa-link mr-2"></i>View Publication</a>
                         <a href="research/MD.html" class="btn-primary flex items-center"><i class="fas fa-flask mr-2"></i>Explore Project</a>
                     </div>
                 </article>
@@ -142,16 +161,22 @@
                 <h3 class="text-xl font-bold text-primary mb-4">Recent Publications</h3>
                 <ul class="space-y-4">
                     <li>
-                        <h5 class="text-lg font-semibold text-dark-text"><a href="#" class="hover:underline">Interplay of geometry and shape-engineered-nanoparticles for efficient thermal performance in forced convection-based electronic cooling</a></h5>
-                        <p class="text-sm italic text-gray-600">September 2023</p>
+                        <h5 class="text-lg font-semibold text-dark-text">
+                            <a href="https://doi.org/10.1002/chem.202501030" target="_blank" class="hover:underline">Enhanced Polysulfide Regulation In Rechargeable Li-S Batteries...</a>
+                        </h5>
+                        <p class="text-sm italic text-gray-600">Chemistry - A European Journal, 2025</p>
                     </li>
                     <li>
-                        <h5 class="text-lg font-semibold text-dark-text"><a href="#" class="hover:underline">Significantly Reduced Thermal Conductivity and Enhanced Thermoelectric Performance of Twisted Bilayer Graphene</a></h5>
-                        <p class="text-sm italic text-gray-600">July 2023</p>
+                        <h5 class="text-lg font-semibold text-dark-text">
+                            <a href="https://doi.org/10.1063/5.0237885" target="_blank" class="hover:underline">Capillary Filling Dynamics in Closed-End Carbon Nanotubes...</a>
+                        </h5>
+                        <p class="text-sm italic text-gray-600">Journal of Chemical Physics, 2024</p>
                     </li>
                     <li>
-                        <h5 class="text-lg font-semibold text-dark-text"><a href="#" class="hover:underline">Mapping Fluid Structuration to Flow Enhancement in Nanofluidic Channels</a></h5>
-                        <p class="text-sm italic text-gray-600">May 2023</p>
+                        <h5 class="text-lg font-semibold text-dark-text">
+                            <a href="https://doi.org/10.1063/5.0208554" target="_blank" class="hover:underline">Interplay of roughness and wettability in microchannel fluid flows...</a>
+                        </h5>
+                        <p class="text-sm italic text-gray-600">AIP Physics of Fluids, 2024</p>
                     </li>
                 </ul>
                 <a href="publications.html" class="btn-primary mt-6 inline-flex items-center"><i class="fas fa-book mr-2"></i>View All Publications</a>
@@ -160,7 +185,7 @@
             <div class="card mt-8">
                 <h3 class="text-xl font-bold text-primary mb-4">Professional Profiles</h3>
                 <ul class="space-y-3 text-dark-text">
-                    <li><a href="https://scholar.google.com/citations?user=YOUR_GOOGLE_SCHOLAR_ID" target="_blank" class="flex items-center hover:text-secondary transition-colors"><i class="fab fa-google mr-3 text-lg"></i>Google Scholar</a></li>
+                    <li><a href="https://scholar.google.com/citations?user=YOUR_GOOGLE_SCHOLAR_ID" target="_blank" class="flex items-center hover:text-secondary transition-colors"><i class="fab fa-google-scholar mr-3 text-lg"></i>Google Scholar</a></li>
                     <li><a href="https://www.researchgate.net/profile/YOUR_RESEARCHGATE_ID" target="_blank" class="flex items-center hover:text-secondary transition-colors"><i class="fab fa-researchgate mr-3 text-lg"></i>ResearchGate</a></li>
                     <li><a href="https://www.linkedin.com/in/YOUR_LINKEDIN_ID" target="_blank" class="flex items-center hover:text-secondary transition-colors"><i class="fab fa-linkedin mr-3 text-lg"></i>LinkedIn</a></li>
                     <li><a href="https://orcid.org/YOUR_ORCID_ID" target="_blank" class="flex items-center hover:text-secondary transition-colors"><i class="fab fa-orcid mr-3 text-lg"></i>ORCID</a></li>
