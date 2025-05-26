@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curated Research Articles</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@google/generative-ai@latest/dist/index.js"></script>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            color: #343a40;
+        }
+
+        /* Main layout container */
+        .main-container {
+            margin-top: 30px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            min-height: 700px; /* Ensure sufficient height */
+        }
+
+        /* Left sidebar for journal tabs */
+        .journal-sidebar {
+            padding-right: 0;
+            border-right: 1px solid #e9ecef;
+        }
+        .journal-sidebar .nav-pills .nav-link {
+            text-align: left;
+            margin-bottom: 5px;
+            border-radius: 0.25rem;
+            color: #495057;
+            background-color: transparent;
+            transition: all 0.2s ease-in-out;
+            font-weight: 500;
+        }
+        .journal-sidebar .nav-pills .nav-link.active {
+            background-color: #007bff;
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2);
+        }
+        .journal-sidebar .nav-pills .nav-link:hover:not(.active) {
+            background-color: #e2f0ff;
+            color: #0056b3;
+        }
+
+        /* Right content area */
+        .content-area {
+            padding-left: 0;
+        }
+        .content-inner {
+            padding: 20px;
+            height: calc(85vh - 60px); /* Adjust height for scrolling, leave space for header/footer */
+            overflow-y: auto; /* Enable scrolling */
+        }
+        .message-placeholder {
+            text-align: center;
+            padding: 50px;
+            color: #6c757d;
+            font-size: 1.2rem;
+        }
+
+        /* Article Card Styles (for the list view) */
+        .article-card {
+            cursor: pointer;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            padding: 15px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+        }
+        .article-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+            background-color: #f7f7f7;
+        }
+        .article-card-img {
+            width: 120px; /* Smaller image for card list */
+            height: 90px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        .article-card-body {
+            flex-grow: 1;
+        }
+        .article-card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            line-height: 1.3;
+            color: #007bff;
+        }
+        .article-card-meta {
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+
+        /* Single Article Detail Styles */
+        .detail-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            object-fit: contain; /* Ensure image fits within container */
+            border: 1px solid #e9ecef;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        .detail-title {
+            font-size: 2.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #0056b3;
+        }
+        .detail-meta {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 10px;
+        }
+        .detail-description {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            color: #343a40;
+            white-space: pre-wrap; /* Preserve formatting if any, handle long text */
+        }
+        .navigation-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body class="container-fluid">
+    <div class="row">
+        <div class="col-12 text-center py-4 bg-light border-bottom">
+            <h1 class="display-4">Curated Research Articles</h1>
+            <p class="lead">Select a journal, then click an article to view its details.</p>
+        </div>
+    </div>
+
+    <div class="row main-container">
+        <div class="col-md-3 journal-sidebar p-4">
+            <h4 class="mb-3 text-muted">Journals</h4>
+            <div class="d-flex flex-column nav nav-pills" id="journal-pills-tab" role="tablist" aria-orientation="vertical">
+                <p class="text-center text-muted mt-4" id="loading-journals-message">Loading journals...</p>
+            </div>
+        </div>
+
+        <div class="col-md-9 content-area">
+            <div class="content-inner">
+                <div id="initial-welcome-message" class="message-placeholder">
+                    <p>Welcome! Articles will appear here once you select a journal.</p>
+                </div>
+
+                <div id="journal-articles-list-container" style="display: none;">
+                    </div>
+
+                <div id="single-article-detail-container" style="display: none;">
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Store all articles globally once parsed
+        let allArticlesData = [];
+        let groupedArticlesByJournal = {}; // To store articles grouped by journal
+        let currentJournalName = ''; // Keep track of the currently active journal
+
+        // DOM elements
+        const journalPillsTab = document.getElementById("journal-pills-tab");
+        const loadingJournalsMessage = document.getElementById("loading-journals-message");
+        const initialWelcomeMessage = document.getElementById("initial-welcome-message");
+        const journalArticlesListContainer = document.getElementById("journal-articles-list-container");
+        const singleArticleDetailContainer = document.getElementById("single-article-detail-container");
+ 
+        // --- Core Functions ---
+
+        // 1. Load CSV data
+        function loadCsvData() {
+            Papa.parse("/data/articles.csv", {
+                download: true,
+                header: true,
+                skipEmptyLines: true,
+                complete: function(results) {
+                    allArticlesData = results.data;
+                    loadingJournalsMessage.style.display = 'none'; // Hide loading message
+
+                    if (!allArticlesData || allArticlesData.length === 0 || Object.keys(allArticlesData[0]).length === 0) {
+                        journalPillsTab.innerHTML = `<p class="text-center text-muted mt-4">No articles found in CSV.</p>`;
+                        initialWelcomeMessage.innerHTML = `<p>It seems there are no articles to display.</p>`;
+                        return;
+                    }
+
+                    // Group articles by journal and assign unique IDs
+                    groupedArticlesByJournal = allArticlesData.reduce((acc, article, index) => {
+                        const journalName = article.Journal && article.Journal.trim() !== '' ? article.Journal.trim() : 'Unknown Journal';
+                        if (!acc[journalName]) {
+                            acc[journalName] = [];
+                        }
+                        article.uniqueId = `article-${index}`; // Add unique ID for easier lookup
+                        acc[journalName].push(article);
+                        return acc;
+                    }, {});
+
+                    console.log("Grouped Articles By Journal Object:", groupedArticlesByJournal);
+                    console.log("Number of unique journals identified:", Object.keys(groupedArticlesByJournal).length);
+
+                    renderJournalTabs(); // Proceed to render tabs
+                },
+                error: function(err) {
+                    loadingJournalsMessage.style.display = 'none';
+                    journalPillsTab.innerHTML = `<p class="text-center text-danger mt-4">Error loading journals.</p>`;
+                    initialWelcomeMessage.innerHTML = `<p class="text-danger">Failed to load articles: ${err.message}. Ensure 'data/articles.csv' exists and is accessible.</p>`;
+                    console.error("PapaParse error:", err);
+                }
+            });
+        }
+
+        // 2. Render Journal Tabs
+        function renderJournalTabs() {
+            journalPillsTab.innerHTML = ''; // Clear existing content
+            const sortedJournalNames = Object.keys(groupedArticlesByJournal).sort();
+
+            sortedJournalNames.forEach((journalName, index) => {
+                const navLink = document.createElement("a");
+                navLink.className = `nav-link`;
+                navLink.id = `tab-${journalName.replace(/[^a-zA-Z0-9-]/g, '-').toLowerCase()}`;
+                navLink.setAttribute('data-journal-name', journalName); // Custom attribute to store journal name
+                navLink.setAttribute('role', 'tab');
+                navLink.textContent = `${journalName} (${groupedArticlesByJournal[journalName].length})`;
+                
+                navLink.addEventListener('click', function() {
+                    activateJournalTab(journalName);
+                });
+                journalPillsTab.appendChild(navLink);
+
+                // Activate the first tab on load
+                if (index === 0) {
+                    navLink.classList.add('active'); // Add active class
+                    activateJournalTab(journalName); // Trigger content load for first journal
+                }
+            });
+        }
+
+        // 3. Activate a Journal Tab and Render its Article List
+        function activateJournalTab(journalName) {
+            currentJournalName = journalName; // Set the global current journal
+
+            // Deactivate all other tabs
+            const allNavLinks = journalPillsTab.querySelectorAll('.nav-link');
+            allNavLinks.forEach(link => link.classList.remove('active'));
+
+            // Activate the clicked tab
+            const currentNavLink = journalPillsTab.querySelector(`[data-journal-name="${journalName}"]`);
+            if (currentNavLink) {
+                currentNavLink.classList.add('active');
+            }
+
+            // Hide initial message and detail container, show list container
+            initialWelcomeMessage.style.display = 'none';
+            singleArticleDetailContainer.style.display = 'none';
+            journalArticlesListContainer.style.display = 'block';
+            journalArticlesListContainer.innerHTML = ''; // Clear previous list
+
+            const articlesForJournal = groupedArticlesByJournal[journalName];
+            if (!articlesForJournal || articlesForJournal.length === 0) {
+                journalArticlesListContainer.innerHTML = `<p class="message-placeholder">No articles found for ${journalName}.</p>`;
+                return;
+            }
+
+            articlesForJournal.forEach(article => {
+                const articleCard = document.createElement('div');
+                articleCard.className = 'article-card';
+                articleCard.setAttribute('data-article-id', article.uniqueId); 
+                
+                const imageUrl = article.ImageURL && article.ImageURL.trim() !== '' ? article.ImageURL : 'https://placehold.co/120x90/E2E8F0/4A5568?text=No+Img';
+                const imgHtml = `<img src="${imageUrl}" alt="Article Thumbnail" class="article-card-img" onerror="this.onerror=null;this.src='https://placehold.co/120x90/E2E8F0/4A5568?text=Error';" />`; 
+
+                articleCard.innerHTML = `
+                    ${imgHtml}
+                    <div class="article-card-body">
+                        <h5 class="article-card-title">${article.Title || 'No Title'}</h5>
+                        <p class="article-card-meta">${article.Authors || 'No Authors'} | ${article.Published || 'No Date'}</p>
+                    </div>
+                `;
+                journalArticlesListContainer.appendChild(articleCard);
+
+                // Add click listener to each article card, passing currentJournalName
+                articleCard.addEventListener('click', () => {
+                    renderArticleDetail(article.uniqueId, currentJournalName);
+                });
+            });
+        }
+
+        // 4. Render Single Article Detail
+        function renderArticleDetail(articleUniqueId, currentJournalName) {
+            const article = allArticlesData.find(a => a.uniqueId === articleUniqueId);
+            if (!article) return;
+
+            // Get articles for the current journal to enable navigation
+            const articlesForCurrentJournal = groupedArticlesByJournal[currentJournalName];
+            const currentIndex = articlesForCurrentJournal.findIndex(a => a.uniqueId === articleUniqueId);
+
+            // Calculate prev/next indices
+            const prevIndex = currentIndex > 0 ? currentIndex - 1 : -1; // -1 indicates no previous
+            const nextIndex = currentIndex < articlesForCurrentJournal.length - 1 ? currentIndex + 1 : -1; // -1 indicates no next
+
+            // Hide list container, show detail container
+            journalArticlesListContainer.style.display = 'none';
+            singleArticleDetailContainer.style.display = 'block';
+            singleArticleDetailContainer.innerHTML = ''; // Clear previous detail
+
+            // Navigation controls (Back, Prev, Next)
+            const navControlHtml = `
+                <div class="navigation-controls">
+                    <button class="btn btn-secondary btn-sm" id="back-to-list-btn">&larr; Back to Journal Articles</button>
+                    <div>
+                        <button class="btn btn-sm btn-outline-primary me-2" id="prev-article-btn" ${prevIndex === -1 ? 'disabled' : ''}>&larr; Previous</button>
+                        <button class="btn btn-sm btn-outline-primary" id="next-article-btn" ${nextIndex === -1 ? 'disabled' : ''}>Next &rarr;</button>
+                    </div>
+                </div>
+            `;
+            singleArticleDetailContainer.insertAdjacentHTML('beforeend', navControlHtml);
+
+            // Add event listeners for new buttons
+            document.getElementById('back-to-list-btn').addEventListener('click', () => {
+                activateJournalTab(currentJournalName); // Re-render the list for the current journal
+            });
+
+            if (prevIndex !== -1) {
+                document.getElementById('prev-article-btn').addEventListener('click', () => {
+                    const prevArticleUniqueId = articlesForCurrentJournal[prevIndex].uniqueId;
+                    renderArticleDetail(prevArticleUniqueId, currentJournalName); // Load previous article
+                });
+            }
+            if (nextIndex !== -1) {
+                document.getElementById('next-article-btn').addEventListener('click', () => {
+                    const nextArticleUniqueId = articlesForCurrentJournal[nextIndex].uniqueId;
+                    renderArticleDetail(nextArticleUniqueId, currentJournalName); // Load next article
+                });
+            }
+
+            // Article Image HTML
+            const imageUrl = article.ImageURL && article.ImageURL.trim() !== '' ? article.ImageURL : 'https://placehold.co/600x400/E2E8F0/4A5568?text=No+Img';
+            const detailImgHtml = `<img src="${imageUrl}" alt="Article Main Image" class="detail-image img-fluid d-block mx-auto" onerror="this.onerror=null;this.src='https://placehold.co/600x400/E2E8F0/4A5568?text=Error';">`;
+
+            // Main Article Details HTML
+            // Note: Description will initially be from CSV (either original or server-side AI).
+            // We'll add a button to trigger client-side AI summary.
+            const articleContentHtml = `
+                <div class="row mt-4">
+                    <div class="col-md-5">
+                        ${detailImgHtml}
+                    </div>
+                    <div class="col-md-7">
+                        <h2 class="detail-title">${article.Title || 'No Title'}</h2>
+                        <p class="detail-meta"><strong>Journal:</strong> ${article.Journal || 'N/A'}</p>
+                        <p class="detail-meta"><strong>Published:</strong> ${article.Published || 'N/A'}</p>
+                        <p class="detail-meta"><strong>Authors:</strong> ${article.Authors || 'N/A'}</p>
+                        ${article.DOI ? `<p class="detail-meta"><strong>DOI:</strong> <a href="https://doi.org/${article.DOI}" target="_blank">${article.DOI}</a></p>` : ''}
+                        <p class="detail-meta"><strong>Link:</strong> <a href="${article.Link || '#'}" target="_blank" class="btn btn-primary btn-sm mt-2">View Full Article</a></p>
+                    </div>
+                </div>
+                <hr class="my-4">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4>Description</h4>
+                    ${geminiModel ? `<button class="btn btn-info btn-sm" id="generate-ai-summary-btn" data-article-id="${article.uniqueId}">Generate AI Summary</button>` : ''}
+                </div>
+                <p class="detail-description" id="article-description">${article.Description || 'No description available.'}</p>
+            `;
+            singleArticleDetailContainer.insertAdjacentHTML('beforeend', articleContentHtml);
+
+            // Add event listener for the new AI summary button
+            if (geminiModel) {
+                document.getElementById('generate-ai-summary-btn').addEventListener('click', async (event) => {
+                    const btn = event.target;
+                    btn.disabled = true;
+                    btn.textContent = 'Generating...';
+                    const descriptionElement = document.getElementById('article-description');
+                    const originalDescription = article.Description || article.Title; // Use title if description is empty or for initial prompt
+                    
+                    const aiSummary = await generateAiSummaryClientSide(article.Title, originalDescription);
+                    descriptionElement.textContent = aiSummary;
+                    btn.textContent = 'AI Summary Generated';
+                    // You might want to optionally disable the button permanently or remove it after generation
+                    // btn.disabled = true; // Keeps it disabled but text changes
+                    // btn.remove(); // Removes the button entirely
+                });
+            }
+        }
+
+        // --- Initialize on Page Load ---
+        loadCsvData();
+   
+    </script>
+</body>
+</html>
