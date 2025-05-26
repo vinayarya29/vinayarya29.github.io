@@ -139,6 +139,14 @@
             align-items: center;
             margin-bottom: 20px;
         }
+
+        /* Keyword Highlighting Style */
+        .highlighted-keyword {
+            background-color: yellow;
+            font-weight: bold;
+            padding: 0.1em 0.2em;
+            border-radius: 3px;
+        }
     </style>
 </head>
 <body class="container-fluid">
@@ -163,6 +171,9 @@
                     <p>Welcome! Articles will appear here once you select a journal.</p>
                 </div>
 
+                <div class="mb-3" id="search-controls-container" style="display: none;">
+                    <input type="text" id="keyword-search-input" class="form-control" placeholder="Search in current journal (title, authors, description)...">
+                </div>
                 <div id="journal-articles-list-container" style="display: none;">
                     </div>
 
@@ -186,12 +197,14 @@
         const initialWelcomeMessage = document.getElementById("initial-welcome-message");
         const journalArticlesListContainer = document.getElementById("journal-articles-list-container");
         const singleArticleDetailContainer = document.getElementById("single-article-detail-container");
+        const keywordSearchInput = document.getElementById("keyword-search-input"); // New
+        const searchControlsContainer = document.getElementById("search-controls-container"); // New
  
         // --- Core Functions ---
 
         // 1. Load CSV data
         function loadCsvData() {
-            Papa.parse("/data/articles.csv", {
+            Papa.parse("/data/articles.csv", { // Ensure this path is correct for your setup
                 download: true,
                 header: true,
                 skipEmptyLines: true,
@@ -202,16 +215,16 @@
                     if (!allArticlesData || allArticlesData.length === 0 || Object.keys(allArticlesData[0]).length === 0) {
                         journalPillsTab.innerHTML = `<p class="text-center text-muted mt-4">No articles found in CSV.</p>`;
                         initialWelcomeMessage.innerHTML = `<p>It seems there are no articles to display.</p>`;
+                        if (searchControlsContainer) searchControlsContainer.style.display = 'none'; // Hide search
                         return;
                     }
 
-                    // Group articles by journal and assign unique IDs
                     groupedArticlesByJournal = allArticlesData.reduce((acc, article, index) => {
                         const journalName = article.Journal && article.Journal.trim() !== '' ? article.Journal.trim() : 'Unknown Journal';
                         if (!acc[journalName]) {
                             acc[journalName] = [];
                         }
-                        article.uniqueId = `article-${index}`; // Add unique ID for easier lookup
+                        article.uniqueId = `article-${index}`; 
                         acc[journalName].push(article);
                         return acc;
                     }, {});
@@ -219,27 +232,34 @@
                     console.log("Grouped Articles By Journal Object:", groupedArticlesByJournal);
                     console.log("Number of unique journals identified:", Object.keys(groupedArticlesByJournal).length);
 
-                    renderJournalTabs(); // Proceed to render tabs
+                    renderJournalTabs(); 
                 },
                 error: function(err) {
                     loadingJournalsMessage.style.display = 'none';
                     journalPillsTab.innerHTML = `<p class="text-center text-danger mt-4">Error loading journals.</p>`;
                     initialWelcomeMessage.innerHTML = `<p class="text-danger">Failed to load articles: ${err.message}. Ensure 'data/articles.csv' exists and is accessible.</p>`;
                     console.error("PapaParse error:", err);
+                    if (searchControlsContainer) searchControlsContainer.style.display = 'none'; // Hide search
                 }
             });
         }
 
         // 2. Render Journal Tabs
         function renderJournalTabs() {
-            journalPillsTab.innerHTML = ''; // Clear existing content
+            journalPillsTab.innerHTML = ''; 
             const sortedJournalNames = Object.keys(groupedArticlesByJournal).sort();
+
+            if (sortedJournalNames.length === 0) {
+                 journalPillsTab.innerHTML = `<p class="text-center text-muted mt-4">No journals found.</p>`;
+                 if (searchControlsContainer) searchControlsContainer.style.display = 'none';
+                 return;
+            }
 
             sortedJournalNames.forEach((journalName, index) => {
                 const navLink = document.createElement("a");
                 navLink.className = `nav-link`;
                 navLink.id = `tab-${journalName.replace(/[^a-zA-Z0-9-]/g, '-').toLowerCase()}`;
-                navLink.setAttribute('data-journal-name', journalName); // Custom attribute to store journal name
+                navLink.setAttribute('data-journal-name', journalName); 
                 navLink.setAttribute('role', 'tab');
                 navLink.textContent = `${journalName} (${groupedArticlesByJournal[journalName].length})`;
                 
@@ -248,33 +268,33 @@
                 });
                 journalPillsTab.appendChild(navLink);
 
-                // Activate the first tab on load
                 if (index === 0) {
-                    navLink.classList.add('active'); // Add active class
-                    activateJournalTab(journalName); // Trigger content load for first journal
+                    navLink.classList.add('active'); 
+                    activateJournalTab(journalName); 
                 }
             });
         }
 
-        // 3. Activate a Journal Tab and Render its Article List
+        // 3. Activate a Journal Tab and Render its Article List (with filtering)
         function activateJournalTab(journalName) {
-            currentJournalName = journalName; // Set the global current journal
+            currentJournalName = journalName; 
 
-            // Deactivate all other tabs
             const allNavLinks = journalPillsTab.querySelectorAll('.nav-link');
             allNavLinks.forEach(link => link.classList.remove('active'));
 
-            // Activate the clicked tab
             const currentNavLink = journalPillsTab.querySelector(`[data-journal-name="${journalName}"]`);
             if (currentNavLink) {
                 currentNavLink.classList.add('active');
             }
 
-            // Hide initial message and detail container, show list container
             initialWelcomeMessage.style.display = 'none';
             singleArticleDetailContainer.style.display = 'none';
             journalArticlesListContainer.style.display = 'block';
-            journalArticlesListContainer.innerHTML = ''; // Clear previous list
+            journalArticlesListContainer.innerHTML = ''; 
+
+            if (searchControlsContainer) {
+                searchControlsContainer.style.display = 'block';
+            }
 
             const articlesForJournal = groupedArticlesByJournal[journalName];
             if (!articlesForJournal || articlesForJournal.length === 0) {
@@ -282,7 +302,30 @@
                 return;
             }
 
-            articlesForJournal.forEach(article => {
+            const searchTerm = keywordSearchInput ? keywordSearchInput.value.trim().toLowerCase() : "";
+            let filteredArticles = articlesForJournal;
+
+            if (searchTerm) {
+                filteredArticles = articlesForJournal.filter(article => {
+                    const titleMatch = article.Title && article.Title.toLowerCase().includes(searchTerm);
+                    const authorsMatch = article.Authors && article.Authors.toLowerCase().includes(searchTerm);
+                    const descriptionMatch = article.Description && article.Description.toLowerCase().includes(searchTerm);
+                    return titleMatch || authorsMatch || descriptionMatch;
+                });
+            }
+
+            if (filteredArticles.length === 0) {
+                if (searchTerm) {
+                    journalArticlesListContainer.innerHTML = `<p class="message-placeholder">No articles match your search for "<strong>${searchTerm}</strong>" in ${journalName}.</p>`;
+                } else {
+                     // This case should ideally not be hit if articlesForJournal has items and searchTerm is empty,
+                     // but it's a fallback.
+                    journalArticlesListContainer.innerHTML = `<p class="message-placeholder">No articles found for ${journalName}.</p>`;
+                }
+                return;
+            }
+
+            filteredArticles.forEach(article => {
                 const articleCard = document.createElement('div');
                 articleCard.className = 'article-card';
                 articleCard.setAttribute('data-article-id', article.uniqueId); 
@@ -299,38 +342,40 @@
                 `;
                 journalArticlesListContainer.appendChild(articleCard);
 
-                // Add click listener to each article card, passing currentJournalName
                 articleCard.addEventListener('click', () => {
                     renderArticleDetail(article.uniqueId, currentJournalName);
                 });
             });
         }
+        
+        // Helper function for highlighting text
+        function highlightText(text, term) {
+            if (!term || !text) return text;
+            // Escape special characters in term for regex
+            const escapedTerm = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const regex = new RegExp(escapedTerm, 'gi'); // 'g' for global, 'i' for case-insensitive
+            return text.replace(regex, match => `<span class="highlighted-keyword">${match}</span>`);
+        }
 
-        // 4. Render Single Article Detail
+        // 4. Render Single Article Detail (with highlighting)
         function renderArticleDetail(articleUniqueId, currentJournalName) {
-            // Log to check if function is called and with what ID
             console.log("Attempting to render article detail for ID:", articleUniqueId);
             const article = allArticlesData.find(a => a.uniqueId === articleUniqueId);
             if (!article) {
                 console.error("Article not found for ID:", articleUniqueId);
                 return;
             }
-            console.log("Article data found:", article); // Log the found article data
+            console.log("Article data found:", article); 
 
-            // Get articles for the current journal to enable navigation
             const articlesForCurrentJournal = groupedArticlesByJournal[currentJournalName];
             const currentIndex = articlesForCurrentJournal.findIndex(a => a.uniqueId === articleUniqueId);
+            const prevIndex = currentIndex > 0 ? currentIndex - 1 : -1; 
+            const nextIndex = currentIndex < articlesForCurrentJournal.length - 1 ? currentIndex + 1 : -1; 
 
-            // Calculate prev/next indices
-            const prevIndex = currentIndex > 0 ? currentIndex - 1 : -1; // -1 indicates no previous
-            const nextIndex = currentIndex < articlesForCurrentJournal.length - 1 ? currentIndex + 1 : -1; // -1 indicates no next
-
-            // Hide list container, show detail container
             journalArticlesListContainer.style.display = 'none';
             singleArticleDetailContainer.style.display = 'block';
-            singleArticleDetailContainer.innerHTML = ''; // Clear previous detail
+            singleArticleDetailContainer.innerHTML = ''; 
 
-            // Navigation controls (Back, Prev, Next)
             const navControlHtml = `
                 <div class="navigation-controls">
                     <button class="btn btn-secondary btn-sm" id="back-to-list-btn">&larr; Back to Journal Articles</button>
@@ -342,36 +387,38 @@
             `;
             singleArticleDetailContainer.insertAdjacentHTML('beforeend', navControlHtml);
 
-            // Add event listeners for new buttons
             document.getElementById('back-to-list-btn').addEventListener('click', () => {
-                activateJournalTab(currentJournalName); // Re-render the list for the current journal
+                activateJournalTab(currentJournalName); 
             });
 
             if (prevIndex !== -1) {
                 document.getElementById('prev-article-btn').addEventListener('click', () => {
                     const prevArticleUniqueId = articlesForCurrentJournal[prevIndex].uniqueId;
-                    renderArticleDetail(prevArticleUniqueId, currentJournalName); // Load previous article
+                    renderArticleDetail(prevArticleUniqueId, currentJournalName); 
                 });
             }
             if (nextIndex !== -1) {
                 document.getElementById('next-article-btn').addEventListener('click', () => {
                     const nextArticleUniqueId = articlesForCurrentJournal[nextIndex].uniqueId;
-                    renderArticleDetail(nextArticleUniqueId, currentJournalName); // Load next article
+                    renderArticleDetail(nextArticleUniqueId, currentJournalName); 
                 });
             }
 
-            // Article Image HTML
+            const searchTerm = keywordSearchInput ? keywordSearchInput.value.trim().toLowerCase() : "";
+
             const imageUrl = article.ImageURL && article.ImageURL.trim() !== '' ? article.ImageURL : 'https://placehold.co/600x400/E2E8F0/4A5568?text=No+Img';
             const detailImgHtml = `<img src="${imageUrl}" alt="Article Main Image" class="detail-image img-fluid d-block mx-auto" onerror="this.onerror=null;this.src='https://placehold.co/600x400/E2E8F0/4A5568?text=Error';">`;
 
-            // Main Article Details HTML (without AI summary button)
+            const highlightedTitle = highlightText(article.Title || 'No Title', searchTerm);
+            const highlightedDescription = highlightText(article.Description || 'No description available.', searchTerm);
+
             const articleContentHtml = `
                 <div class="row mt-4">
                     <div class="col-md-5">
                         ${detailImgHtml}
                     </div>
                     <div class="col-md-7">
-                        <h2 class="detail-title">${article.Title || 'No Title'}</h2>
+                        <h2 class="detail-title">${highlightedTitle}</h2>
                         <p class="detail-meta"><strong>Journal:</strong> ${article.Journal || 'N/A'}</p>
                         <p class="detail-meta"><strong>Published:</strong> ${article.Published || 'N/A'}</p>
                         <p class="detail-meta"><strong>Authors:</strong> ${article.Authors || 'N/A'}</p>
@@ -383,13 +430,26 @@
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h4>Description</h4>
                 </div>
-                <p class="detail-description" id="article-description">${article.Description || 'No description available.'}</p>
+                <p class="detail-description" id="article-description">${highlightedDescription}</p>
             `;
             singleArticleDetailContainer.insertAdjacentHTML('beforeend', articleContentHtml);
         }
 
+        // --- New Function to Initialize Search ---
+        function initializeSearch() {
+            if (keywordSearchInput) {
+                keywordSearchInput.addEventListener('input', () => {
+                    // Only trigger filtering if a journal is currently active and has articles
+                    if (currentJournalName && groupedArticlesByJournal[currentJournalName]) {
+                        activateJournalTab(currentJournalName); // Re-filter and render the current journal's articles
+                    }
+                });
+            }
+        }
+
         // --- Initialize on Page Load ---
         loadCsvData();
+        initializeSearch(); // Call initializeSearch after loadCsvData
     </script>
 </body>
 </html>
