@@ -37,8 +37,15 @@
       var n = NAV.filter(function (x) { return x.id === a.dataset.nav; })[0];
       if (!n) return;
       a.href = hrefFor(n) + (a.dataset.hash ? "#" + a.dataset.hash : "");
-      if (embedded) a.target = "_top";
     });
+    // Google Sites' embed frame is sandboxed without top-navigation, so links that
+    // would take over the window (target=_top, and mailto:/tel: launched from the frame)
+    // are blocked. Popups are allowed, so open those in a new tab instead.
+    if (embedded) {
+      document.querySelectorAll('a[data-nav], a[target="_top"], a[href^="mailto:"], a[href^="tel:"]').forEach(function (a) {
+        a.target = "_blank"; a.rel = "noopener";
+      });
+    }
     // Chart tooltips
     var tip = document.getElementById("tip");
     if (tip) document.querySelectorAll(".chart .hit").forEach(function (r) {
