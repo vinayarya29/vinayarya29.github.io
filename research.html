@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Research | Dr. Vinay Arya</title>
-<meta name="description" content="Research of Dr. Vinay Arya, IIT Kharagpur: nanofluidics and desalination, wettability and boiling, physics-informed machine learning, passive thermal management and energy storage.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%231f3a6e'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' font-weight='600' fill='white' text-anchor='middle'%3EVA%3C/text%3E%3C/svg%3E">
+<meta name="description" content="Research of Dr. Vinay Arya, IIT Kharagpur: transport under nanoscale confinement, graphene desalination membranes, polymer-grafted nanochannels, oil–water separation, physics-informed machine learning and hydrogel passive cooling.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231d3b78'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' font-weight='600' fill='white' text-anchor='middle'%3EVA%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
@@ -15,128 +15,140 @@
 <body data-page="research">
 
 <header class="topbar" id="topbar"><div class="in">
-  <span class="nm">Dr. Vinay Arya</span>
+  <span class="nm"><span>Dr. Vinay Arya</span></span>
   <nav></nav>
 </div></header>
 
 <div class="page single">
   <div class="pagehead">
     <div class="eyebrow">Research</div>
-    <h1>Engineering interfaces at the nanoscale for water and energy</h1>
-    <p>I study how fluids, ions and polymers behave at interfaces and in nanoscale confinement, and use that bottom-up understanding to design sustainable technologies for water and energy security (UN SDGs 6 and 7). Most of this work is done with <strong>Prof. Chirodeep Bakli</strong> in the Tensore Lab, School of Energy Science and Engineering, IIT Kharagpur, combining molecular dynamics, machine learning and experiments.</p>
+    <h1>Controlling transport under nanoscale confinement</h1>
+    <p>When water, ions and polymers are squeezed into channels a few molecules wide, continuum theory breaks down: interfacial forces, entropy, electrostatics and molecular layering take over. I use molecular dynamics, physics-informed machine learning and experiments to understand these effects and use them in water and energy technologies. This work is done with <strong>Prof. Chirodeep Bakli</strong> in the Tensore Lab, IIT Kharagpur.</p>
+    <div class="jump">
+      <a href="#thesis">PhD thesis</a><a href="#desalination">Desalination</a><a href="#polymers">Polymers</a><a href="#oil">Oil–water</a><a href="#pinn">Physics-informed AI</a><a href="#cooling">Passive cooling</a><a href="#beyond">Beyond the thesis</a><a href="#methods">Methods</a><a href="#collaborations">Collaborations</a>
+    </div>
   </div>
 
   <main>
+    <section id="thesis">
+      <div class="thesis">
+        <div class="tx">
+          <div class="k">PhD thesis · IIT Kharagpur · February 2026</div>
+          <h3>Transport control under confinement: molecular mechanisms, soft matter effects, and multiscale integration</h3>
+          <p>The thesis builds a physics-driven multiscale framework that connects molecular mechanisms to system-level performance. It establishes design principles for graphene desalination membranes, shows how grafted polymers tune slip and selectivity, uncovers passive oil–water fractionation pathways, and links atomistic descriptors to device-scale predictions with physics-informed machine learning. Finally, it applies this understanding to polyacrylamide–LiCl hydrogels for passive cooling of electronics and solar panels.</p>
+          <div class="meta">Supervisor: Prof. Chirodeep Bakli · School of Energy Science and Engineering · Supported by the Prime Minister's Research Fellowship</div>
+        </div>
+        <div class="im"><img src="images/nanochannel.jpg" alt="Water molecules flowing through a graphene nanochannel"></div>
+      </div>
+    </section>
+
     <section id="areas">
-      <h2>Research areas</h2>
-
-      <div class="area">
-        <div class="n">1</div>
+      <div class="feature" id="desalination">
+        <figure class="fig"><div class="frame"><img src="images/desalination.jpg" alt="Hydration shells of Na+ and Cl- ions in bulk water and at a graphene interface" loading="lazy"></div><figcaption>Ions shed part of their hydration shell at the graphene interface.</figcaption></figure>
         <div>
-          <h3>Nanofluidics &amp; membrane desalination</h3>
-          <p>My PMRF doctoral project: how pore size and functionalisation of graphene-oxide membranes change the orientation and transport of confined water, and how ion–water interactions near a functionalised nanopore govern pressure-driven desalination. The aim is a desalination device that exploits electrostatic and hydrodynamic interactions of confined water to filter water using less energy than conventional methods. Related work looks at polymer brushes, capillary filling and ion-specific effects in nanochannels.</p>
+          <div class="ch">Thesis chapter 3</div>
+          <h3>Water and ion transport for desalination</h3>
+          <p>Pressure-driven flow through functionalised graphene nanopores. Water structuration acts as an invisible gate, hydrophilic pores pass more water, and ion selectivity comes from hydration asymmetry: dehydration energy barriers combined with van der Waals interactions decide which ions get through.</p>
           <ul class="papers">
-            <li><a href="https://doi.org/10.1039/d2nr05552j" target="_blank" rel="noopener">Functionalized graphene membranes for membrane-level engineering</a>, Nanoscale 2022</li>
-            <li><a href="https://doi.org/10.1063/5.0140765" target="_blank" rel="noopener">Fluid structuration and flow enhancement in nanofluidic channels</a>, J. Chem. Phys. 2023</li>
-            <li><a href="https://doi.org/10.1063/5.0237885" target="_blank" rel="noopener">Capillary filling in closed-end carbon nanotubes</a>, J. Chem. Phys. 2024</li>
-            <li><a href="https://doi.org/10.1039/D5NR00920K" target="_blank" rel="noopener">Hydrodynamics inside brush-decorated nano-confinements</a>, Nanoscale 2025</li>
-            <li><a href="https://doi.org/10.1016/j.jcis.2026.141099" target="_blank" rel="noopener">Ion-specific symmetry-breaking at nanoconfined water–hydrocarbon interfaces</a>, J. Colloid Interface Sci. 2026</li>
+            <li><a href="https://doi.org/10.1039/D2NR05552J" target="_blank" rel="noopener">Coupling solute interactions with functionalized graphene membranes</a>, Nanoscale 2022</li>
+            <li><a href="https://doi.org/10.1063/5.0140765" target="_blank" rel="noopener">Mapping fluid structuration to flow enhancement in nanofluidic channels</a>, J. Chem. Phys. 2023</li>
           </ul>
         </div>
       </div>
 
-      <div class="area">
-        <div class="n">2</div>
+      <div class="feature flip" id="polymers">
+        <figure class="fig"><div class="frame"><img src="images/polymers.jpg" alt="Molecular dynamics snapshot of polymer chains flowing in a graphene nanochannel" loading="lazy"></div><figcaption>Polymer chains under nano-confinement between graphene-like walls.</figcaption></figure>
         <div>
-          <h3>Wettability, boiling &amp; microchannel flows</h3>
-          <p>Linking surface roughness, wettability and topography to slip, flow enhancement and boiling heat transfer, from molecular to channel scale, including passive separation of oil spills by shear–wettability modulation.</p>
+          <div class="ch">Thesis chapter 4</div>
+          <h3>Polymer-mediated nanofluidic transport</h3>
+          <p>How wettability shapes polymer density layering, slip length and flow enhancement through competing enthalpy and entropy. Grafted polymer brushes reshape water at the molecular level: grafting density, chain length and channel size act as control knobs that tune flow resistance, slip and brush folding, captured in a unified descriptor.</p>
           <ul class="papers">
-            <li><a href="https://doi.org/10.1016/j.energy.2025.137284" target="_blank" rel="noopener">Boiling of water over functionalized graphene interfaces</a>, Energy 2025</li>
-            <li><a href="https://doi.org/10.1039/d4nr01235f" target="_blank" rel="noopener">Passive fractionating mechanism for oil spill</a>, Nanoscale 2024</li>
             <li><a href="https://doi.org/10.1063/5.0185533" target="_blank" rel="noopener">Wettability-modulated behaviour of polymers under nano-confinement</a>, J. Chem. Phys. 2024</li>
-            <li><a href="https://doi.org/10.1615/ComputThermalScien.2022043262" target="_blank" rel="noopener">Variable wettability and body force in nanochannels: a multiscale approach</a>, Comput. Therm. Sci. 2023</li>
+            <li><a href="https://doi.org/10.1039/D5NR00920K" target="_blank" rel="noopener">Hydrodynamics inside brush-decorated nano-confinements</a>, Nanoscale 2025</li>
           </ul>
         </div>
       </div>
 
-      <div class="area">
-        <div class="n">3</div>
+      <div class="feature" id="oil">
+        <figure class="fig cover"><div class="frame" style="aspect-ratio:3/4"><img src="images/nanoscale-cover.jpg" alt="Nanoscale journal cover featuring the oil spill fractionation work" loading="lazy"></div><figcaption>Featured on the cover of <i>Nanoscale</i>, 2024.</figcaption></figure>
         <div>
-          <h3>Physics-informed machine learning</h3>
-          <p>Using neural networks and physics-informed neural networks (PINNs) to find hidden patterns in simulation data and turn them into predictive models: electroosmotic flow in graphene nanochannels, a new pressure-drop model for roughness-induced microchannel flow built from extensive CFD data, and ML-driven building façade design with EnergyPlus.</p>
+          <div class="ch">Thesis chapter 5</div>
+          <h3>Passive oil–water fractionation</h3>
+          <p>Multiphase transport of oil–water mixtures in nanochannels. Composition-driven segregation and wall–fluid attraction determine which phase sticks to the surface and which slips, giving a design map for separating oil spills passively, without pumps or chemicals.</p>
           <ul class="papers">
-            <li><a href="https://doi.org/10.1016/j.desal.2025.119824" target="_blank" rel="noopener">PINNs for electroosmotic flow in graphene nanochannels</a>, Desalination 2026</li>
-            <li><a href="https://doi.org/10.1063/5.0208554" target="_blank" rel="noopener">Roughness and wettability in microchannels, assisted by deep learning</a>, Phys. Fluids 2024</li>
-            <li>PINN-based modelling of microchannel flow dynamics, APS DFD 2024</li>
-            <li><a href="https://doi.org/10.1145/3563357.3566139" target="_blank" rel="noopener">ML-based façade optimisation for passive thermal management, Kolkata</a>, ACM BuildSys 2022</li>
+            <li><a href="https://doi.org/10.1039/D4NR01235F" target="_blank" rel="noopener">Passive fractionating mechanism for oil spill using shear-wettability modulation</a>, Nanoscale 2024 · <span class="pill">Cover article</span></li>
+          </ul>
+          <figure class="fig" style="margin-top:14px"><div class="frame" style="aspect-ratio:auto;padding:8px"><img src="images/oil-map.jpg" alt="Design map showing where oil stays near or away from the graphene-like surface" loading="lazy"></div><figcaption>Design map: oil near (yellow) or away from (purple) the surface, at 335 K and 370 K.</figcaption></figure>
+        </div>
+      </div>
+
+      <div class="feature flip" id="pinn">
+        <figure class="fig"><div class="frame"><img src="images/pinn.jpg" alt="Physics-informed neural network architecture with PDE, boundary and data losses" loading="lazy"></div><figcaption>PINN architecture combining data, boundary and governing-equation losses.</figcaption></figure>
+        <div>
+          <div class="ch">Thesis chapter 6</div>
+          <h3>Physics-informed AI for multiscale integration</h3>
+          <p>A physics-informed neural network that embeds atomistic descriptors into the governing transport equations, so a few hundred MD simulations are enough for fast, interpretable predictions of electroosmotic flow in graphene nanochannels and of system-level metrics such as specific water production.</p>
+          <ul class="papers">
+            <li><a href="https://doi.org/10.1016/j.desal.2025.119824" target="_blank" rel="noopener">Physics-informed ML for electroosmotic flow in graphene nanochannels</a>, Desalination 2026</li>
+            <li><a href="https://doi.org/10.1063/5.0208554" target="_blank" rel="noopener">Roughness and wettability in microchannel flows, assisted by deep learning</a>, Phys. Fluids 2024</li>
+            <li><a href="https://doi.org/10.1145/3563357.3566139" target="_blank" rel="noopener">ML-based façade optimisation for passive thermal management</a>, ACM BuildSys 2022</li>
           </ul>
         </div>
       </div>
 
-      <div class="area">
-        <div class="n">4</div>
+      <div class="feature" id="cooling">
+        <figure class="fig"><div class="frame"><img src="images/hydrogel-teg.jpg" alt="Hydrogel synthesis, transparency and adhesion, and wind-tunnel thermoelectric set-up" loading="lazy"></div><figcaption>PAM–LiCl hydrogel: chemistry, transparency, adhesion and the wind-tunnel thermoelectric test.</figcaption></figure>
         <div>
-          <h3>Passive thermal management &amp; solar thermal</h3>
-          <p>Hydrogels for passive photovoltaic cooling, wind-enhanced hydrogel–thermoelectric architectures that cool and recover energy, nanoparticle-based electronics cooling, and thermal-storage-assisted solar drying and cooking.</p>
+          <div class="ch">Thesis chapter 7</div>
+          <h3>Hydrogels for thermal management &amp; renewable energy</h3>
+          <p>Polyacrylamide–lithium chloride composite hydrogels that cool surfaces passively through evaporation. On solar panels they lower operating temperature and recover power output in rooftop tests; on high-heat-flux electronics, combined with thermoelectric modules and airflow, they cool and recover energy at the same time.</p>
           <ul class="papers">
-            <li><a href="https://doi.org/10.1002/solr.202500913" target="_blank" rel="noopener">Dual-function hydrogel for passive PV cooling</a>, Solar RRL 2026</li>
-            <li><a href="https://doi.org/10.1002/adsu.202501720" target="_blank" rel="noopener">Hybrid hydrogel–thermoelectric architecture for cooling and energy recovery</a>, Adv. Sustainable Syst. 2026</li>
-            <li><a href="https://doi.org/10.1080/10407782.2023.2251090" target="_blank" rel="noopener">Shape-engineered nanoparticles for electronic cooling</a>, Numer. Heat Transfer A 2024</li>
-            <li>Storage-based solar cooker with sensor-less dual-axis tracking, Indian Patent 319066-001 (2019)</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="area">
-        <div class="n">5</div>
-        <div>
-          <h3>Electrolytes &amp; interfaces for energy storage</h3>
-          <p>Molecular dynamics of electrolyte structure, solute interactions and ion arrangement (for example, how NaClO<sub>4</sub> and ethylene-glycol concentration shape supercapacitor performance), paired with experiments on high-voltage pseudocapacitors and Li–S batteries.</p>
-          <ul class="papers">
-            <li><a href="https://doi.org/10.1002/smll.202400975" target="_blank" rel="noopener">2.5 V in-plane flexi-pseudocapacitor for all-weather use</a>, Small 2024</li>
-            <li><a href="https://doi.org/10.1039/D5TA10251K" target="_blank" rel="noopener">All-climate high-voltage MnO<sub>2</sub> pseudocapacitor, water-in-salt electrolyte</a>, J. Mater. Chem. A 2026</li>
-            <li><a href="https://doi.org/10.1002/chem.202501030" target="_blank" rel="noopener">ZnS electrocatalyst for polysulfide regulation in Li–S batteries</a>, Chem. Eur. J. 2025</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="area">
-        <div class="n">6</div>
-        <div>
-          <h3>2D materials, composites &amp; mechanics</h3>
-          <p>How stacking and twisting 2D layers changes their properties (twisted bilayer graphene; a graphene–MoSeS sandwich, <span class="status on">Ongoing</span>), interfacial structuring in rubber–epoxy composites, and stress analysis of 3D-printed anthill architectures.</p>
-          <ul class="papers">
-            <li><a href="https://doi.org/10.1063/5.0153052" target="_blank" rel="noopener">Thermal conductivity and thermoelectric performance of twisted bilayer graphene</a>, J. Appl. Phys. 2023</li>
-            <li><a href="https://doi.org/10.1016/j.compositesa.2026.109687" target="_blank" rel="noopener">Interfacial molecular structuring in rubber–epoxy composites</a>, Composites A 2026</li>
-            <li><a href="https://doi.org/10.1093/oxfmat/itac003" target="_blank" rel="noopener">Mechanics of 3D-printed anthill architecture</a>, Oxford Open Mater. Sci. 2022</li>
+            <li><a href="https://doi.org/10.1002/solr.202500913" target="_blank" rel="noopener">Dual-function hydrogel for passive photovoltaic cooling</a>, Solar RRL 2026</li>
+            <li><a href="https://doi.org/10.1002/adsu.202501720" target="_blank" rel="noopener">Wind-enhanced hybrid hydrogel–thermoelectric architecture</a>, Adv. Sustainable Syst. 2026</li>
+            <li><a href="https://doi.org/10.1080/10407782.2023.2251090" target="_blank" rel="noopener">Shape-engineered nanoparticles for electronic cooling</a>, Numer. Heat Transfer A 2023</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <section id="featured">
-      <h2>Featured in magazines</h2>
-      <div class="cards">
-        <a class="card" href="https://drive.google.com/file/d/1AoCO1wyqAuyeVInD32WyvJPzxNulxMx9/view" target="_blank" rel="noopener">
-          <div class="k">Magazine feature · PDF</div>
-          <h3>Sustainable supercapacitors</h3>
-          <p>Electrolyte design for high-voltage, all-weather supercapacitors.</p>
-          <span class="go">Read the feature →</span>
-        </a>
-        <a class="card" href="https://drive.google.com/file/d/1AgOEv7PCP-Z35eh1tnuevx_cinz1SWmI/view" target="_blank" rel="noopener">
-          <div class="k">Magazine feature · PDF</div>
-          <h3>Nanofluidics &amp; oil flow</h3>
-          <p>Wettability-driven passive separation of oil spills.</p>
-          <span class="go">Read the feature →</span>
-        </a>
+    <section id="beyond">
+      <h2>Beyond the thesis</h2>
+      <div class="minis">
+        <div class="mini">
+          <h3>Wetting, boiling &amp; capillarity</h3>
+          <p>Topography and wettability in boiling on graphene; capillary filling that defies Lucas–Washburn.</p>
+          <ul class="papers">
+            <li><a href="https://doi.org/10.1016/j.energy.2025.137284" target="_blank" rel="noopener">Energy 2025</a></li>
+            <li><a href="https://doi.org/10.1063/5.0237885" target="_blank" rel="noopener">J. Chem. Phys. 2024</a></li>
+            <li><a href="https://doi.org/10.1016/j.jcis.2026.141099" target="_blank" rel="noopener">J. Colloid Interface Sci. 2026</a></li>
+          </ul>
+        </div>
+        <div class="mini">
+          <h3>Electrolytes for energy storage</h3>
+          <p>MD insight into electrolyte structure for high-voltage pseudocapacitors and Li–S batteries.</p>
+          <ul class="papers">
+            <li><a href="https://doi.org/10.1002/smll.202400975" target="_blank" rel="noopener">Small 2024</a></li>
+            <li><a href="https://doi.org/10.1039/D5TA10251K" target="_blank" rel="noopener">J. Mater. Chem. A 2026</a></li>
+            <li><a href="https://doi.org/10.1002/chem.202501030" target="_blank" rel="noopener">Chem. Eur. J. 2025</a></li>
+          </ul>
+        </div>
+        <div class="mini">
+          <h3>2D materials &amp; composites</h3>
+          <p>Twisted bilayer graphene, a graphene–MoSeS sandwich <span class="status">Ongoing</span>, rubber–epoxy interfaces and 3D-printed anthill mechanics.</p>
+          <ul class="papers">
+            <li><a href="https://doi.org/10.1063/5.0153052" target="_blank" rel="noopener">J. Appl. Phys. 2023</a></li>
+            <li><a href="https://doi.org/10.1016/j.compositesa.2026.109687" target="_blank" rel="noopener">Composites A 2026</a></li>
+            <li><a href="https://doi.org/10.1093/oxfmat/itac003" target="_blank" rel="noopener">Oxford Open Mater. Sci. 2022</a></li>
+          </ul>
+        </div>
       </div>
     </section>
 
     <section id="methods">
       <h2>Methods &amp; tools</h2>
-      <div class="taggroup"><b>Simulation</b><div class="chips"><span>All-atom molecular dynamics (EMD / NEMD)</span><span>CFD: ANSYS, COMSOL</span><span>Multiscale transport</span><span>EnergyPlus</span><span>Ansys Workbench (stress)</span></div></div>
+      <div class="taggroup"><b>Simulation</b><div class="chips"><span>All-atom molecular dynamics (EMD / NEMD)</span><span>CFD: ANSYS, COMSOL</span><span>Multiscale transport</span><span>EnergyPlus</span><span>Ansys Workbench</span></div></div>
       <div class="taggroup"><b>Machine learning</b><div class="chips"><span>Physics-informed neural networks</span><span>Scientific ML</span><span>Deep learning</span><span>Surrogate modelling &amp; optimisation</span></div></div>
-      <div class="taggroup"><b>Experiments</b><div class="chips"><span>Micro/nanofluidic characterisation</span><span>Interfacial &amp; wetting characterisation</span><span>Hydrogel synthesis</span><span>Thermal energy storage design</span></div></div>
+      <div class="taggroup"><b>Experiments</b><div class="chips"><span>Hydrogel synthesis</span><span>Solar simulator &amp; I–V tracing</span><span>Infrared thermography</span><span>Wind-tunnel testing</span><span>Wetting characterisation</span></div></div>
       <div class="taggroup"><b>Computing</b><div class="chips"><span>Python</span><span>MATLAB</span><span>Data analytics</span></div></div>
     </section>
 
@@ -180,7 +192,7 @@
   </main>
 
   <footer>
-    <span>Dr. Vinay Arya · IIT Kharagpur</span>
+    <span>© 2026 Dr. Vinay Arya · IIT Kharagpur</span>
     <span><a data-nav="publications" href="publications.html">Full publication list →</a></span>
   </footer>
 </div>
