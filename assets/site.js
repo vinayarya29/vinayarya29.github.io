@@ -133,7 +133,12 @@
       requestAnimationFrame(step);
     }
 
+    var seen = false;
+    setTimeout(function () {  // safety net: if the observer never reports, never leave content hidden
+      if (!seen) document.querySelectorAll(".reveal, .chart, .journey").forEach(function (el) { el.classList.add("in"); });
+    }, 2500);
     var io = new IntersectionObserver(function (entries) {
+      seen = true;
       entries.forEach(function (en) {
         if (!en.isIntersecting) return;
         var el = en.target;
