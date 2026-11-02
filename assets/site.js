@@ -39,6 +39,23 @@
   function hrefFor(n) { return embedded ? n.gs : n.gh; }
 
   document.addEventListener("DOMContentLoaded", function () {
+    // ---- visible visitor count in the footer -------------------------------
+    // Needs GoatCounter → Settings → "Allow adding visitor counts on your website". If that's off
+    // (403) or the request fails, nothing is shown.
+    var foot = document.querySelector("footer");
+    if (foot && window.fetch && /\.github\.io$/.test(location.hostname)) {
+      fetch("https://vinayarya.goatcounter.com/counter/TOTAL.json")
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (j) {
+          if (!j || !j.count || j.count === "0") return;
+          var s = document.createElement("span"); s.className = "visits";
+          s.textContent = j.count + " visitors";
+          var first = foot.firstElementChild;
+          if (first) first.appendChild(document.createTextNode(" · ")), first.appendChild(s);
+        })
+        .catch(function () {});
+    }
+
     // ---- navigation -------------------------------------------------------
     var bar = document.getElementById("topbar");
     if (bar && !embedded) {
