@@ -12,7 +12,7 @@
     { id: "home",         label: "Home",          gh: "./",                gs: GS + "/home" },
     { id: "research",     label: "Research",      gh: "research.html",     gs: GS + "/research" },
     { id: "publications", label: "Publications",  gh: "publications.html", gs: GS + "/publications" },
-    { id: "teaching",     label: "Teaching & CV", gh: "teaching.html",     gs: GS + "/teaching-cv" }
+    { id: "teaching",     label: "Teaching & CV", gh: "teaching.html",     gs: GS + "/teaching" }
   ];
 
   var embedded = false;
