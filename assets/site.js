@@ -13,8 +13,19 @@
     { id: "home",         label: "Home",          gh: "./",                gs: GS + "/home" },
     { id: "research",     label: "Research",      gh: "research.html",     gs: GS + "/research" },
     { id: "publications", label: "Publications",  gh: "publications.html", gs: GS + "/publications" },
+    { id: "talks",        label: "Talks & Outreach", gh: "talks.html",     gs: GS + "/talks" },
     { id: "teaching",     label: "Teaching & CV", gh: "teaching.html",     gs: GS + "/teaching" }
   ];
+
+  // Visitor counts (GoatCounter: free, no cookies, no personal data). Counting starts once the
+  // account "vinayarya" exists at https://www.goatcounter.com — until then the request just fails quietly.
+  var GOATCOUNTER = "https://vinayarya.goatcounter.com/count";
+  if (/\.github\.io$/.test(location.hostname)) {
+    var gc = document.createElement("script");
+    gc.async = true; gc.src = "https://gc.zgo.at/count.js"; gc.setAttribute("data-goatcounter", GOATCOUNTER);
+    gc.setAttribute("data-goatcounter-settings", '{"allow_frame": true}');  // count visits through the Google Sites embeds too
+    document.head.appendChild(gc);
+  }
 
   var root = document.documentElement;
   var embedded = false;
