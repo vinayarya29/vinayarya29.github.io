@@ -298,3 +298,7 @@ footer { grid-column: 1 / -1; border-top: 1px solid var(--rule); padding-top: 18
   .news li { grid-template-columns: 1fr; gap: 2px; padding: 10px 14px; }
 }
 .thesis .tx > *:not(canvas) { position: relative; z-index: 1; }
+
+/* Home footer sits outside .page so the sticky sidebar can never slide over it */
+.page-foot { max-width: 1120px; margin: 0 auto; padding: 0 28px 40px; }
+@media (max-width: 900px) { .page-foot { padding: 0 16px 32px; } }
