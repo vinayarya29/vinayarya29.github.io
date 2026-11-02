@@ -302,3 +302,21 @@ footer { grid-column: 1 / -1; border-top: 1px solid var(--rule); padding-top: 18
 /* Home footer sits outside .page so the sticky sidebar can never slide over it */
 .page-foot { max-width: 1120px; margin: 0 auto; padding: 0 28px 40px; }
 @media (max-width: 900px) { .page-foot { padding: 0 16px 32px; } }
+
+/* Talks: press clipping and journal covers */
+.press { margin: 0; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 28px; align-items: center; }
+.press .frame { background: #fff; border: 1px solid var(--rule); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.press img { display: block; width: 100%; height: auto; }
+.press .ch { font-size: .72em; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; color: var(--teal); }
+.press h3 { font-family: var(--serif); font-size: 1.3em; font-weight: 600; margin: 4px 0 8px; line-height: 1.25; }
+.press p { margin: 0; color: var(--soft); }
+.covers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.cover { display: flex; flex-direction: column; color: var(--text); }
+.cover:hover { text-decoration: none; }
+.cover img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 8px; box-shadow: var(--shadow); transition: transform .25s, box-shadow .25s; background: var(--panel); }
+.cover:hover img { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+.cover .j { margin-top: 10px; font-weight: 600; }
+.cover .d { font-size: .8em; color: var(--accent-2); font-weight: 600; letter-spacing: .02em; }
+.cover .t { font-size: .88em; color: var(--muted); margin-top: 2px; line-height: 1.45; }
+@media (max-width: 900px) { .press { grid-template-columns: 1fr; gap: 14px; } }
+@media (max-width: 600px) { .covers { grid-template-columns: 1fr 1fr; gap: 14px; } }

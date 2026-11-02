@@ -130,7 +130,7 @@
     // ---- motion: reveal on scroll ----------------------------------------
     var groups = [
       [".pagehead, main > section > h2, .lead, .chips, .thesis, .cta, .news, .taggroup, .edu li, .tbl, .pubbar", 0],
-      [".highlights .hl, .tiles .tile, .minis .mini, .cards .card, .feature", 80]
+      [".highlights .hl, .tiles .tile, .minis .mini, .cards .card, .feature, .covers .cover, .press", 80]
     ];
     groups.forEach(function (g) {
       document.querySelectorAll(g[0]).forEach(function (el) {
