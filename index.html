@@ -1,0 +1,877 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Dr. Vinay Arya | PostDoctoral Fellow, IIT Kharagpur</title>
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%231f3a6e'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' font-weight='600' fill='white' text-anchor='middle'%3EVA%3C/text%3E%3C/svg%3E">
+<meta name="description" content="I am a Postdoctoral Fellow in the School of Energy Science and Engineering at IIT Kharagpur, working in the Tensore Lab. My research sits where fluid mechanics,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff; --panel: #f7f8fa; --text: #1a1d23; --soft: #3d4350; --muted: #6b7280; --rule: #e3e6eb;
+    --accent: #1f3a6e; --link: #234b8f; --bar: #33579b;
+    --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #14171c; --panel: #1b1f26; --text: #e6e8ec; --soft: #c3c8d1; --muted: #8f97a5; --rule: #2a2f38;
+      --accent: #a9bde6; --link: #9db6ea; --bar: #6f8fd6; }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 15.5px/1.65 var(--sans); -webkit-font-smoothing: antialiased; }
+  a { color: var(--link); text-decoration: none; }
+  a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+  /* top bar */
+  .topbar { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--rule); }
+  .topbar .in { max-width: 1120px; margin: 0 auto; padding: 0 28px; height: 58px; display: flex; align-items: center; gap: 28px; }
+  .topbar .nm { font-family: var(--serif); font-weight: 600; font-size: 1.12em; color: var(--text); white-space: nowrap; }
+  .topbar nav { display: flex; gap: 22px; margin-left: auto; overflow-x: auto; }
+  .topbar nav a { color: var(--muted); font-size: .9em; font-weight: 500; white-space: nowrap; padding: 4px 0; border-bottom: 2px solid transparent; text-decoration: none; }
+  .topbar nav a:hover, .topbar nav a.active { color: var(--text); border-bottom-color: var(--accent); }
+  .tools { max-width: 1120px; margin: 10px auto 0; padding: 0 28px; display: flex; gap: 8px; justify-content: flex-end; }
+  .tools a, .tools button { font: inherit; font-size: .8em; padding: 5px 11px; border: 1px solid var(--rule); border-radius: 6px; background: var(--bg); color: var(--soft); cursor: pointer; text-decoration: none; }
+
+  /* layout */
+  .page { max-width: 1120px; margin: 0 auto; padding: 28px 28px 56px; display: grid; grid-template-columns: 290px minmax(0, 1fr); gap: 56px; }
+  aside { position: sticky; top: 86px; align-self: start; }
+  .photo { width: 100%; max-width: 290px; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 20%; border-radius: 6px; display: block; background: var(--panel); }
+  .photo.ph { display: grid; place-items: center; font-family: var(--serif); font-size: 4.5em; color: var(--muted); }
+  aside h1 { font-family: var(--serif); font-weight: 600; font-size: 1.85em; line-height: 1.15; margin: 18px 0 6px; letter-spacing: -.005em; }
+  .role { font-weight: 600; color: var(--soft); }
+  .aff { color: var(--muted); font-size: .94em; line-height: 1.5; }
+  .contact { list-style: none; padding: 0; margin: 18px 0 0; border-top: 1px solid var(--rule); padding-top: 14px; }
+  .contact li { margin: 6px 0; }
+  .contact a { display: flex; align-items: center; gap: 10px; color: var(--soft); font-size: .92em; word-break: break-word; }
+  .contact a:hover { color: var(--link); }
+  .contact svg { width: 16px; height: 16px; flex-shrink: 0; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; opacity: .8; }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 18px; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .stat { padding: 12px 0; text-align: center; }
+  .stat + .stat { border-left: 1px solid var(--rule); }
+  .stat b { display: block; font-family: var(--serif); font-size: 1.55em; font-weight: 600; line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .stat span { font-size: .7em; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .chart { margin-top: 14px; }
+  .chart .lbl { font-size: .7em; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+  .chart svg { width: 100%; height: auto; display: block; overflow: visible; }
+  .chart .bar { fill: var(--bar); }
+  .chart .hit { fill: transparent; }
+  .chart text { fill: var(--muted); font: 10px var(--sans); }
+  .chart text.val { fill: var(--text); font-weight: 600; }
+  .chart .base { stroke: var(--rule); }
+  .chart details { font-size: .75em; color: var(--muted); margin-top: 4px; }
+  .chart table { border-collapse: collapse; } .chart td, .chart th { padding: 1px 12px 1px 0; text-align: left; }
+  .tip { position: fixed; pointer-events: none; background: var(--text); color: var(--bg); font-size: .78em; padding: 3px 8px; border-radius: 4px; opacity: 0; transition: opacity .1s; z-index: 30; }
+
+  /* content */
+  main section { padding: 6px 0 34px; }
+  main section + section { border-top: 1px solid var(--rule); padding-top: 30px; }
+  h2 { font-family: var(--serif); font-weight: 600; font-size: 1.45em; margin: 0 0 16px; letter-spacing: -.005em; }
+  h2 .ct { font-family: var(--sans); font-size: .55em; font-weight: 500; color: var(--muted); margin-left: 8px; letter-spacing: 0; }
+  .lead { font-size: 1.04em; color: var(--soft); margin: 0 0 14px; max-width: 70ch; }
+  .interests { font-size: .92em; color: var(--muted); }
+  .interests b { color: var(--soft); font-weight: 600; margin-right: 6px; }
+  .themes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 36px; }
+  .theme h3 { font-size: 1em; font-weight: 600; margin: 0 0 4px; display: flex; gap: 10px; align-items: baseline; }
+  .theme h3 .n { font-family: var(--serif); color: var(--accent); font-weight: 600; font-size: .95em; min-width: 1.4em; }
+  .theme p { margin: 0 0 0 calc(1.4em + 10px); color: var(--muted); font-size: .93em; line-height: 1.55; }
+
+  /* citations */
+  .cite { margin: 0; padding: 12px 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 2.6em minmax(0, 1fr); }
+  .cite:last-child { border-bottom: none; }
+  .cite .no { color: var(--muted); font-size: .85em; padding-top: 2px; font-variant-numeric: tabular-nums; }
+  .cite .t { font-weight: 600; color: var(--text); }
+  .cite .a { color: var(--soft); font-size: .94em; }
+  .cite .a strong { color: var(--text); font-weight: 600; text-decoration: underline; text-decoration-color: var(--rule); text-underline-offset: 3px; }
+  .cite .v { color: var(--soft); font-size: .94em; }
+  .cite .v i { font-style: italic; }
+  .cite .meta { font-size: .8em; color: var(--muted); margin-top: 3px; display: flex; gap: 12px; flex-wrap: wrap; }
+  .cite .meta a { color: var(--link); }
+  .cite .kind { text-transform: uppercase; letter-spacing: .06em; font-size: .92em; }
+  .selected .cite { grid-template-columns: minmax(0, 1fr); }
+
+  .pubbar { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; border-bottom: 1px solid var(--rule); margin-bottom: 4px; }
+  .tabs { display: flex; gap: 20px; }
+  .tabs button { font: inherit; font-size: .9em; font-weight: 500; color: var(--muted); background: none; border: none; padding: 8px 0 10px; border-bottom: 2px solid transparent; margin-bottom: -1px; cursor: pointer; }
+  .tabs button.on { color: var(--text); border-bottom-color: var(--accent); }
+  .tabs button span { color: var(--muted); font-weight: 400; margin-left: 4px; }
+  .search { margin-left: auto; font: inherit; font-size: .86em; padding: 6px 10px; border: 1px solid var(--rule); border-radius: 6px; background: var(--bg); color: var(--text); width: 240px; margin-bottom: 6px; }
+  .yr { font-family: var(--serif); font-weight: 600; color: var(--accent); font-size: 1.05em; margin: 20px 0 0; }
+  .none { color: var(--muted); padding: 14px 0; display: none; }
+
+  .cv { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px 40px; }
+  .cv h3 { font-size: .78em; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; font-weight: 600; }
+  .cv ul { list-style: none; margin: 0; padding: 0; }
+  .cv li { display: grid; grid-template-columns: 6.5em minmax(0, 1fr); gap: 10px; padding: 5px 0; font-size: .95em; }
+  .cv li .w { color: var(--muted); font-variant-numeric: tabular-nums; }
+
+  footer { grid-column: 1 / -1; border-top: 1px solid var(--rule); padding-top: 18px; color: var(--muted); font-size: .82em; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+
+  @media (max-width: 900px) {
+    .page { grid-template-columns: 1fr; gap: 28px; padding: 20px 18px 40px; }
+    aside { position: static; display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 0 20px; }
+    aside .photo { grid-row: 1 / span 4; max-width: 140px; }
+    aside h1 { margin-top: 0; font-size: 1.5em; }
+    .contact, .stats, .chart { grid-column: 1 / -1; }
+    .themes { grid-template-columns: 1fr; }
+    .topbar .in { padding: 0 18px; gap: 16px; }
+    .topbar .nm { display: none; }
+    .topbar nav { margin-left: 0; }
+    .tools { padding: 0 18px; }
+    .tools a, .tools button { white-space: nowrap; font-size: .75em; padding: 4px 9px; }
+    .tools .long { display: none; }
+    .search { width: 100%; margin-left: 0; }
+  }
+  @media (max-width: 480px) {
+    aside { grid-template-columns: 1fr; }
+    aside .photo { grid-row: auto; max-width: 200px; margin-bottom: 4px; }
+  }
+  @media print {
+    :root { --bg: #fff; --panel: #fff; --text: #000; --soft: #222; --muted: #555; --rule: #bbb; --accent: #1f3a6e; --link: #000; --bar: #33579b; }
+    body { font-size: 10pt; }
+    .topbar, .tools, .pubbar, .chart details, .tip, section.selected { display: none !important; }
+    .page { display: block; padding: 0; max-width: none; }
+    aside { position: static; display: grid; grid-template-columns: 110px 1fr 200px; gap: 0 18px; align-items: start; border-bottom: 1.5px solid var(--accent); padding-bottom: 10pt; margin-bottom: 12pt; }
+    aside .photo { grid-row: 1 / span 5; max-width: 110px; }
+    aside h1 { margin: 0 0 2pt; font-size: 18pt; }
+    .contact { grid-column: 3; grid-row: 1 / span 5; margin: 0; border: none; padding: 0; }
+    .stats, .chart { display: none; }
+    main section { padding: 0 0 12pt; break-inside: auto; }
+    main section + section { padding-top: 10pt; }
+    .cite { break-inside: avoid; padding: 4pt 0; display: grid !important; }
+    .yr { display: block !important; }
+    footer { display: none; }
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+<header class="topbar"><div class="in">
+  <span class="nm">Dr. Vinay Arya</span>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#research">Research</a>
+    <a href="#publications">Publications</a>
+    
+  </nav>
+</div></header>
+
+
+
+<div class="page">
+  <aside>
+    <img class="photo" src="data:image/jpeg;base64,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" alt="Dr. Vinay Arya">
+    
+    <h1>Dr. Vinay Arya</h1>
+    <div class="role">PostDoctoral Fellow</div>
+    <div class="aff">
+      School of Energy Science and Engineering<br>
+      IIT Kharagpur<br>
+      Tensore Lab
+    </div>
+    
+      <ul class="contact">
+        <li><a href="https://scholar.google.com/citations?user=mRa-uLMAAAAJ&amp;hl=en" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="m2 9 10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/></svg><span>Google Scholar</span></a></li><li><a href="https://orcid.org/0000-0002-9526-6279" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 8v8M12.5 8h1.5a4 4 0 0 1 0 8h-1.5z"/><circle cx="9" cy="6.2" r=".4"/></svg><span>ORCID</span></a></li><li><a href="https://www.linkedin.com/in/vinayarya/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg><span>LinkedIn</span></a></li><li><a href="https://sites.google.com/view/vinayarya/home?authuser=0" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg><span>Website</span></a></li><li><a href="mailto:vinay@iitkgp.ac.in" ><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span>vinay@iitkgp.ac.in</span></a></li><li><a href="tel:+919907688756" ><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span>+919907688756</span></a></li>
+      </ul>
+    
+    
+      <div class="stats">
+        <div class="stat"><b>247</b><span>Citations</span></div>
+        <div class="stat"><b>11</b><span>h-index</span></div>
+        <div class="stat"><b>11</b><span>i10-index</span></div>
+      </div>
+    
+    
+      
+      <div class="chart">
+        <div class="lbl">Citations per year</div>
+        <svg viewBox="0 0 290 82" role="img" aria-label="Citations per year: 2022 6, 2023 19, 2024 50, 2025 69, 2026 100">
+          
+            
+            <path class="bar" d="M14.0,64 V64.0 Q14.0,61.0 17.0,61.0 H41.0 Q44.0,61.0 44.0,64.0 V64 Z"><title>2022: 6 citations</title></path>
+            
+            <text x="29.0" y="77" text-anchor="middle">2022</text>
+            <rect class="hit" x="0.0" y="0" width="58.0" height="64" data-tip="2022: 6 citations"></rect>
+          
+            
+            <path class="bar" d="M72.0,64 V57.5 Q72.0,54.5 75.0,54.5 H99.0 Q102.0,54.5 102.0,57.5 V64 Z"><title>2023: 19 citations</title></path>
+            
+            <text x="87.0" y="77" text-anchor="middle">2023</text>
+            <rect class="hit" x="58.0" y="0" width="58.0" height="64" data-tip="2023: 19 citations"></rect>
+          
+            
+            <path class="bar" d="M130.0,64 V42.0 Q130.0,39.0 133.0,39.0 H157.0 Q160.0,39.0 160.0,42.0 V64 Z"><title>2024: 50 citations</title></path>
+            
+            <text x="145.0" y="77" text-anchor="middle">2024</text>
+            <rect class="hit" x="116.0" y="0" width="58.0" height="64" data-tip="2024: 50 citations"></rect>
+          
+            
+            <path class="bar" d="M188.0,64 V32.5 Q188.0,29.5 191.0,29.5 H215.0 Q218.0,29.5 218.0,32.5 V64 Z"><title>2025: 69 citations</title></path>
+            
+            <text x="203.0" y="77" text-anchor="middle">2025</text>
+            <rect class="hit" x="174.0" y="0" width="58.0" height="64" data-tip="2025: 69 citations"></rect>
+          
+            
+            <path class="bar" d="M246.0,64 V17.0 Q246.0,14.0 249.0,14.0 H273.0 Q276.0,14.0 276.0,17.0 V64 Z"><title>2026: 100 citations</title></path>
+            <text class="val" x="261.0" y="11.0" text-anchor="middle">100</text>
+            <text x="261.0" y="77" text-anchor="middle">2026</text>
+            <rect class="hit" x="232.0" y="0" width="58.0" height="64" data-tip="2026: 100 citations"></rect>
+          
+          <line class="base" x1="0" x2="290" y1="64" y2="64"></line>
+        </svg>
+        <details><summary>Show as table</summary>
+          <table><tr><th>Year</th><th>Citations</th></tr><tr><td>2022</td><td>6</td></tr><tr><td>2023</td><td>19</td></tr><tr><td>2024</td><td>50</td></tr><tr><td>2025</td><td>69</td></tr><tr><td>2026</td><td>100</td></tr></table>
+        </details>
+      </div>
+    
+  </aside>
+
+  <main>
+    
+    <section id="about">
+      <h2>About</h2>
+      <p class="lead">I am a Postdoctoral Fellow in the School of Energy Science and Engineering at IIT Kharagpur, working in the Tensore Lab. My research sits where fluid mechanics, molecular simulation and energy technology meet. Using all-atom molecular dynamics, I study how water, ions and polymers organise and move at solid interfaces and inside nanoscale confinement, and I combine these insights with physics-informed machine learning to make them predictive at device scale. I apply this to practical problems: desalination membranes, boiling and microchannel heat transfer, hydrogel-based passive cooling for solar panels, and electrolytes for supercapacitors and batteries. I enjoy collaborations that connect simulations with experiments.</p>
+      <div class="interests"><b>Interests</b>Nanofluidics · Molecular dynamics · Interfacial phenomena · Physics-informed ML · Heat transfer · Hydrogels · Passive cooling · Energy storage · Desalination</div>
+    </section>
+    
+
+    
+    <section id="research">
+      <h2>Research</h2>
+      <div class="themes">
+        
+          <div class="theme"><h3><span class="n">1.</span>Nanofluidics &amp; interfacial transport</h3><p>How water, ions and polymers structure and flow inside nanochannels, graphene membranes and brush-decorated confinements, studied with all-atom molecular dynamics.</p></div>
+        
+          <div class="theme"><h3><span class="n">2.</span>Wettability, boiling &amp; microchannel flows</h3><p>Linking surface roughness, wettability and topography to slip, flow enhancement and boiling heat transfer over functionalised surfaces.</p></div>
+        
+          <div class="theme"><h3><span class="n">3.</span>Physics-informed machine learning</h3><p>PINNs and data-driven models that predict electroosmotic transport for desalination, microchannel hydrodynamics and building thermal performance.</p></div>
+        
+          <div class="theme"><h3><span class="n">4.</span>Passive thermal management &amp; hydrogels</h3><p>Hydrogel-based cooling for photovoltaics, wind-enhanced hydrogel–thermoelectric energy recovery, and cooling strategies for electronics and buildings.</p></div>
+        
+          <div class="theme"><h3><span class="n">5.</span>Materials for energy storage</h3><p>Electrolyte and interface design for high-voltage pseudocapacitors and Li–S batteries, pairing experiments with atomistic insight.</p></div>
+        
+      </div>
+    </section>
+    
+
+    
+
+    
+    <section class="selected">
+      <h2>Selected publications <span class="ct">most cited</span></h2>
+      <div class="cite" data-kind="Journal" data-text="coupling solute interactions with functionalized graphene membranes: towards facile membrane-level engineering v arya, a chaudhuri, c bakli nanoscale 14 (44), 16661-16672, 2022">
+        
+        <div>
+          <span class="a"><strong>V Arya</strong>, A Chaudhuri, C Bakli (2022).</span>
+          <span class="t">Coupling solute interactions with functionalized graphene membranes: towards facile membrane-level engineering.</span>
+          
+          <span class="v"><i>Nanoscale 14 (44)</i>, 16661-16672.</span>
+          <div class="meta">
+            <span class="kind">Journal</span>
+            <span>Cited by 29</span>
+            <a href="https://doi.org/10.1039/d2nr05552j" target="_blank" rel="noopener">DOI</a>
+            <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=mRa-uLMAAAAJ&amp;pagesize=100&amp;sortby=pubdate&amp;citation_for_view=mRa-uLMAAAAJ:WF5omc3nYNoC" target="_blank" rel="noopener">Scholar</a>
+          </div>
+        </div>
+      </div><div class="cite" data-kind="Journal" data-text="mapping fluid structuration to flow enhancement in nanofluidic channels a agarwal, v arya, b golani, c bakli, s chakraborty the journal of chemical physics 158 (21), 2023">
+        
+        <div>
+          <span class="a">A Agarwal, <strong>V Arya</strong>, B Golani, C Bakli, S Chakraborty (2023).</span>
+          <span class="t">Mapping fluid structuration to flow enhancement in nanofluidic channels.</span>
+          
+          <span class="v"><i>The Journal of Chemical Physics 158 (21)</i>.</span>
+          <div class="meta">
+            <span class="kind">Journal</span>
+            <span>Cited by 25</span>
+            <a href="https://doi.org/10.1063/5.0140765" target="_blank" rel="noopener">DOI</a>
+            <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=mRa-uLMAAAAJ&amp;pagesize=100&amp;sortby=pubdate&amp;citation_for_view=mRa-uLMAAAAJ:_FxGoFyzp5QC" target="_blank" rel="noopener">Scholar</a>
+          </div>
+        </div>
+      </div><div class="cite" data-kind="Journal" data-text="interplay of roughness and wettability in microchannel fluid flows-elucidating hydrodynamic details assisted by deep learning n mondal, v arya, p sarangi, c bakli physics of fluids 36, 062014, 2024">
+        
+        <div>
+          <span class="a">N Mondal, <strong>V Arya</strong>, P Sarangi, C Bakli (2024).</span>
+          <span class="t">Interplay of Roughness and Wettability in Microchannel Fluid Flows-Elucidating Hydrodynamic Details Assisted by Deep Learning.</span>
+          
+          <span class="v"><i>Physics of Fluids 36</i>, 062014.</span>
+          <div class="meta">
+            <span class="kind">Journal</span>
+            <span>Cited by 22</span>
+            <a href="https://doi.org/10.1063/5.0208554" target="_blank" rel="noopener">DOI</a>
+            <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=mRa-uLMAAAAJ&amp;pagesize=100&amp;sortby=pubdate&amp;citation_for_view=mRa-uLMAAAAJ:8k81kl-MbHgC" target="_blank" rel="noopener">Scholar</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+
+    <section id="publications">
+      <h2>Publications <span class="ct">28</span></h2>
+      
+        <div class="pubbar">
+          <div class="tabs">
+            <button type="button" class="on" data-kind="all">All<span>28</span></button>
+            <button type="button" data-kind="Journal">Journal articles<span>20</span></button><button type="button" data-kind="Conference">Conference<span>7</span></button><button type="button" data-kind="Patent">Patents<span>1</span></button>
+          </div>
+          <input class="search" type="search" placeholder="Search publications" aria-label="Search publications">
+        </div>
+        
+        
+          <div class="ygroup"><div class="yr">2026</div>
+          <div class="cite" data-kind="Journal" data-text="physics-informed machine learning for electroosmotic flow in graphene nanochannels: towards next-generation desalination membranes v arya, a agarwal, c bakli desalination, 119824, 2026">
+        <div class="no">[28]</div>
+        <div>
+          <span class="a"><strong>V Arya</strong>, A Agarwal, C Bakli (2026).</span>
+          <span class="t">Physics-informed machine learning for electroosmotic flow in graphene nanochannels: Towards next-generation desalination membranes.</span>
+          
+          <span class="v"><i>Desalination</i>, 119824.</span>
+          <div class="meta">
+            <span class="kind">Journal</span>
+            <span>Cited by 8</span>
+            <a href="https://doi.org/10.1016/j.desal.2025.119824" target="_blank" rel="noopener">DOI</a>
+            <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=mRa-uLMAAAAJ&amp;pagesize=100&amp;sortby=pubdate&amp;citation_for_view=mRa-uLMAAAAJ:YOwf2qJgpHMC" target="_blank" rel="noopener">Scholar</a>
+          </div>
+        </div>
+      </div>
+          
+        
+          
+          <div class="cite" data-kind="Journal" data-text="sustainable thermal solutions: wind‐enhanced hybrid hydrogel‐thermoelectric architecture for self‐regulating cooling and energy recovery v arya, t shafi, v saxena, n mondal, s chowdhury, bk dubey, c bakli advanced sustainable systems 10 (3), e01720, 2026">
+        <div class="no">[27]</div>
+        <div>
+          <span class="a"><strong>V Arya</strong>, T Shafi, V Saxena, N Mondal, S Chowdhury, BK Dubey, C Bakli (2026).</span>
+          <span class="t">Sustainable Thermal Solutions: Wind‐Enhanced Hybrid Hydrogel‐Thermoelectric Architecture for Self‐Regulating Cooling and Energy Recovery.</span>
+          
+          <span class="v"><i>Advanced Sustainable Systems 10 (3)</i>, e01720.</span>
+          <div class="meta">
+            <span class="kind">Journal</span>
+            <span>Cited by 8</span>
+            <a href="https://doi.org/10.1002/adsu.202501720" target="_blank" rel="noopener">DOI</a>
+            <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=mRa-uLMAAAAJ&amp;pagesize=100&amp;sortby=pubdate&amp;citation_for_view=mRa-uLMAAAAJ:M3ejUd6NZC8C" target="_blank" rel="noopener">Scholar</a>
+          </div>
+        </div>
+      </div>
+          
+        
+          
+          <div class="cite" data-kind="Journal" data-text="dual‐function hydrogel synthesis for passive photovoltaic cooling for climate‐resilient solar infrastructure v arya, v chandra, a roy, c bakli solar rrl 10 (6), e202500913, 2026">
+        <div class="no">[26]</div>
+        <div>
+          <span class="a"><strong>V Arya</strong>, V Chandra, A Roy, C Bakli (2026).</span>
+          <span class="t">Dual‐Function Hydrogel Synthesis for Passive Photovoltaic Cooling for Climate‐Resilient Solar Infrastructure.</span>
+          
+          <span class="v"><i>Solar RRL 10 (6)</i>, e202500913.</span>
+          <div class="meta">
+            <span class="kind">Journal</span>
+            <span>Cited by 4</span>
+            <a href="https://doi.org/10.1002/solr.202500913" target="_blank" rel="noopener">DOI</a>
+            <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=mRa-uLMAAAAJ&amp;pagesize=100&amp;sortby=pubdate&amp;citation_for_view=mRa-uLMAAAAJ:qxL8FJ1GzNcC" target="_blank" rel="noopener">Scholar</a>
+          </div>
+        </div>
+      </div>
+          
+        
+          
+          <div class="cite" data-kind="Journal" data-text="all-climate high-voltage mno2 pseudocapacitor enabled by a molecularly crowded water-in-salt electrolyte p thippeswamy, v arya, i dey, c bakli, d ghosh journal of materials chemistry a 14 (41), 27642-27658, 2026">
+        <div class="no">[25]</div>
+        <div>
+          <span class="a">P Thippeswamy, <strong>V Arya</strong>, I Dey, C Bakli, D Ghosh (2026).</span>
+          <span class="t">All-climate high-voltage MnO2 pseudocapacitor enabled by a molecularly crowded water-in-salt electrolyte.</span>
+          
+          <span class="v"><i>Journal of Materials Chemistry A 14 (41)</i>, 27642-27658.</span>
+          <div class="meta">
+            <span class="kind">Journal</span>
+            <span>Cited by 1</span>
+            <a href="https://doi.org/10.1039/D5TA10251K" target="_blank" rel="noopener">DOI</a>
+            <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=mRa-uLMAAAAJ&amp;pagesize=100&amp;sortby=pubdate&amp;citation_for_view=mRa-uLMAAAAJ:9ZlFYXVOiuMC" target="_blank" rel="noopener">Scholar</a>
+          </div>
+        </div>
+      </div>
+          
+        
+          
+          <div class="cite" data-kind="Journal" data-text="interfacial molecular structuring governs mechanical performance in hybrid rubber–epoxy composites: insights from experiments and atomistic simulations r roy, bd roy, mb sk, p haldar, v arya, c bakli, n modak composites part a: applied science and manufacturing, 109687, 2026">
+        <div class="no">[24]</div>
+        <div>
+          <span class="a">R Roy, BD Roy, MB Sk, P Haldar, <strong>V Arya</strong>, C Bakli, N Modak (2026).</span>
+          <span class="t">Interfacial molecular structuring governs mechanical performance in hybrid rubber–epoxy composites: Insights from experiments and atomistic simulations.</span>
+          
+          <span class="v"><i>Composites Part A: Applied Science and Manufacturing</i>, 109687.</span>
+          <div class="meta">
+            <span class="kind">Journal</span>
+            <span>Cited by 1</span>
+            <a href="https://doi.org/10.1016/j.compositesa.2026.109687" target="_blank" rel="noopener">DOI</a>
+            <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=mRa-uLMAAAAJ&amp;pagesize=100&amp;sortby=pubdate&amp;citation_for_view=mRa-uLMAAAAJ:4TOpqqG69KYC" target="_blank" rel="noopener">Scholar</a>
+          </div>
+        </div>
+      </div>
+          
+        
+          
+          <div class="cite" data-kind="Journal" data-text="ion-specific symmetry-breaking at nanoconfined water–hydrocarbon interfaces a chaudhuri, v arya, c bakli, s chakraborty journal of colloid and interface science, 141099, 2026">
+        <div class="no">[23]</div>
+        <div>
+          <span class="a">A Chaudhuri, <strong>V Arya</strong>, C Bakli, S Chakraborty (2026).</span>
+          <span class="t">Ion-specific symmetry-breaking at nanoconfined water–hydrocarbon interfaces.</span>
+          
+          <span class="v"><i>Journal of Colloid and Interface Science</i>, 141099.</span>
+          <div class="meta">
+            <span class="kind">Journal</span>
+            
+            
+            <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=mRa-uLMAAAAJ&amp;pagesize=100&amp;sortby=pubdate&amp;citation_for_view=mRa-uLMAAAAJ:QIV2ME_5wuYC" target="_blank" rel="noopener">Scholar</a>
+          </div>
+        </div>
+      </div>
+          
+        
+          </div><div class="ygroup"><div class="yr">2025</div>
+          <div class="cite" data-kind="Journal" data-text="interplay of topography, wettability, and confinement controls boiling of water over functionalized graphene interfaces s debnath, v arya, bh kim, c bakli, s chakraborty energy 333, 137284, 2025">
+        <div class="no">[22]</div>
+        <div>
+          <span class="a">S Debnath, <strong>V Arya</strong>, BH Kim, C Bakli, S Chakraborty (2025).</span>
+          <span class="t">Interplay of topography, wettability, and confinement controls boiling of water over functionalized graphene interfaces.</span>
+          
+          <span class="v"><i>Energy 333</i>, 137284.</span>
+          <div class="meta">
+            <span class="kind">Journal</span>
+            <span>Cited by 11</span>
+            <a href="https://doi.org/10.1016/j.energy.2025.137284" target="_blank" rel="noopener">DOI</a>
+            <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=mRa-uLMAAAAJ&amp;pagesize=100&amp;sortby=pubdate&amp;citation_for_view=mRa-uLMAAAAJ:KlAtU1dfN6UC" target="_blank" rel="noopener">Scholar</a>
+          </div>
+        </div>
+      </div>
+          
+        
+          
+          <div class="cite" data-kind="Journal" data-text="enhanced polysulfide regulation in rechargeable li–s batteries with zns as electrocatalyst: experimental validation and interfacial insights from simulations ns reddy, c bakli, v arya, d ghosh chemistry–a european journal 31 (36), e202501030, 2025">
+        <div class="no">[21]</div>
+        <div>
+          <span class="a">NS Reddy, C Bakli, <strong>V Arya</strong>, D Ghosh (2025).</span>
+          <span class="t">Enhanced Polysulfide Regulation in Rechargeable Li–S Batteries with ZnS as Electrocatalyst: Experimental Validation and Interfacial Insights from Simulations.</span>
+          
+          <span class="v"><i>Chemistry–A European Journal 31 (36)</i>, e202501030.</span>
+          <div class="meta">
+            <span class="kind">Journal</span>
+            <span>Cited by 5</span>
+            <a href="https://doi.org/10.1002/chem.202501030" target="_blank" rel="noopener">DOI</a>
+            <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=mRa-uLMAAAAJ&amp;pagesize=100&amp;sortby=pubdate&amp;citation_for_view=mRa-uLMAAAAJ:kNdYIx-mwKoC" target="_blank" rel="noopener">Scholar</a>
+          </div>
+        </div>
+      </div>
+          
+        
+          
+          <div class="cite" data-kind="Journal" data-text="hydrodynamics inside brush decorated nano-confinements: an all-atom molecular dynamics study v arya, c bakli nanoscale 17 (34), 19854-19869, 2025">
+        <div class="no">[20]</div>
+        <div>
+          <span class="a"><strong>V Arya</strong>, C Bakli (2025).</span>
+          <span class="t">Hydrodynamics inside brush decorated nano-confinements: an all-atom molecular dynamics study.</span>
+          
+          <span class="v"><i>Nanoscale 17 (34)</i>, 19854-19869.</span>
+          <div class="meta">
+            <span class="kind">Journal</span>
+            <span>Cited by 4</span>
+            <a href="https://doi.org/10.1039/D5NR00920K" target="_blank" rel="noopener">DOI</a>
+            <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=mRa-uLMAAAAJ&amp;pagesize=100&amp;sortby=pubdate&amp;citation_for_view=mRa-uLMAAAAJ:Zph67rFs4hoC" target="_blank" rel="noopener">Scholar</a>
+          </div>
+        </div>
+      </div>
+          
+        
+          
+          <div class="cite" data-kind="Conference" data-text="mathematical modeling and drying kinetics in thermal energy storage-assisted greenhouse solar dryer v saxena, ks dubey, v arya, a goyal, c bakli 2025 ieee 4th international conference on smart technologies for power …, 2025">
+        <div class="no">[19]</div>
+        <div>
+          <span class="a">V Saxena, KS Dubey, <strong>V Arya</strong>, A Goyal, C Bakli (2025).</span>
+          <span class="t">Mathematical Modeling and Drying Kinetics in Thermal Energy Storage-Assisted Greenhouse Solar Dryer.</span>
+          
+          <span class="v"><i>2025 IEEE 4th International Conference on Smart Technologies for Power …</i>.</span>
+          <div class="meta">
+            <span class="kind">Conference</span>
+            
+            
+            <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=mRa-uLMAAAAJ&amp;pagesize=100&amp;sortby=pubdate&amp;citation_for_view=mRa-uLMAAAAJ:mVmsd5A6BfQC" target="_blank" rel="noopener">Scholar</a>
+          </div>
+        </div>
+      </div>
+          
+        
+          </div><div class="ygroup"><div class="yr">2024</div>
+          <div class="cite" data-kind="Journal" data-text="interplay of roughness and wettability in microchannel fluid flows-elucidating hydrodynamic details assisted by deep learning n mondal, v arya, p sarangi, c bakli physics of fluids 36, 062014, 2024">
+        <div class="no">[18]</div>
+        <div>
+          <span class="a">N Mondal, <strong>V Arya</strong>, P Sarangi, C Bakli (2024).</span>
+          <span class="t">Interplay of Roughness and Wettability in Microchannel Fluid Flows-Elucidating Hydrodynamic Details Assisted by Deep Learning.</span>
+          
+          <span class="v"><i>Physics of Fluids 36</i>, 062014.</span>
+          <div class="meta">
+            <span class="kind">Journal</span>
+            <span>Cited by 22</span>
+            <a href="https://doi.org/10.1063/5.0208554" target="_blank" rel="noopener">DOI</a>
+            <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=mRa-uLMAAAAJ&amp;pagesize=100&amp;sortby=pubdate&amp;citation_for_view=mRa-uLMAAAAJ:8k81kl-MbHgC" target="_blank" rel="noopener">Scholar</a>
+          </div>
+        </div>
+      </div>
+          
+        
+          
+          <div class="cite" data-kind="Journal" data-text="interplay of geometry and shape-engineered-nanoparticles for efficient thermal performance in forced convection-based electronic cooling s rastogi, v arya, c bakli numerical heat transfer, part a: applications 85 (23), 3982-4005, 2024">
+        <div class="no">[17]</div>
+        <div>
+          <span class="a">S Rastogi, <strong>V Arya</strong>, C Bakli (2024).</span>
+          <span class="t">Interplay of geometry and shape-engineered-nanoparticles for efficient thermal performance in forced convection-based electronic cooling.</span>
+          
+          <span class="v"><i>Numerical Heat Transfer</i>, Part A: Applications 85 (23), 3982-4005.</span>
+          <div class="meta">
+            <span class="kind">Journal</span>
+            <span>Cited by 20</span>
+            <a href="https://doi.org/10.1080/10407782.2023.2251090" target="_blank" rel="noopener">DOI</a>
+            <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=mRa-uLMAAAAJ&amp;pagesize=100&amp;sortby=pubdate&amp;citation_for_view=mRa-uLMAAAAJ:roLk4NBRz8UC" target="_blank" rel="noopener">Scholar</a>
+          </div>
+        </div>
+      </div>
+          
+        
+          
+          <div class="cite" data-kind="Journal" data-text="capillary filling dynamics in closed-end carbon nanotubes—defying the classical lucas–washburn paradigm a chaudhuri, v arya, c bakli, s chakraborty the journal of chemical physics 161 (18), 2024">
+        <div class="no">[16]</div>
+        <div>
+          <span class="a">A Chaudhuri, <strong>V Arya</strong>, C Bakli, S Chakraborty (2024).</span>
+          <span class="t">Capillary filling dynamics in closed-end carbon nanotubes—Defying the classical Lucas–Washburn paradigm.</span>
+          
+          <span class="v"><i>The Journal of Chemical Physics 161 (18)</i>.</span>
+          <div class="meta">
+            <span class="kind">Journal</span>
+            <span>Cited by 18</span>
+            <a href="https://doi.org/10.1063/5.0237885" target="_blank" rel="noopener">DOI</a>
+            <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=mRa-uLMAAAAJ&amp;pagesize=100&amp;sortby=pubdate&amp;citation_for_view=mRa-uLMAAAAJ:3fE2CSJIrl8C" target="_blank" rel="noopener">Scholar</a>
+          </div>
+        </div>
+      </div>
+          
+        
+          
+          <div class="cite" data-kind="Journal" data-text="passive fractionating mechanism for oil spill using shear-wettability modulation v arya, a chaudhuri, c bakli nanoscale 16 (29), 13885-13894, 2024">
+        <div class="no">[15]</div>
+        <div>
+          <span class="a"><strong>V Arya</strong>, A Chaudhuri, C Bakli (2024).</span>
+          <span class="t">Passive fractionating mechanism for oil spill using shear-wettability modulation.</span>
+          
+          <span class="v"><i>Nanoscale 16 (29)</i>, 13885-13894.</span>
+          <div class="meta">
+            <span class="kind">Journal</span>
+            <span>Cited by 13</span>
+            <a href="https://doi.org/10.1039/d4nr01235f" target="_blank" rel="noopener">DOI</a>
+            <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=mRa-uLMAAAAJ&amp;pagesize=100&amp;sortby=pubdate&amp;citation_for_view=mRa-uLMAAAAJ:5nxA0vEk-isC" target="_blank" rel="noopener">Scholar</a>
+          </div>
+        </div>
+      </div>
+          
+        
+          
+          <div class="cite" data-kind="Journal" data-text="wettability-modulated behavior of polymers under varying degrees of nano-confinement v arya, a chaudhuri, c bakli the journal of chemical physics 160 (6), 2024">
+        <div class="no">[14]</div>
+        <div>
+          <span class="a"><strong>V Arya</strong>, A Chaudhuri, C Bakli (2024).</span>
+          <span class="t">Wettability-modulated behavior of polymers under varying degrees of nano-confinement.</span>
+          
+          <span class="v"><i>The Journal of Chemical Physics 160 (6)</i>.</span>
+          <div class="meta">
+            <span class="kind">Journal</span>
+            <span>Cited by 13</span>
+            <a href="https://doi.org/10.1063/5.0185533" target="_blank" rel="noopener">DOI</a>
+            <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=mRa-uLMAAAAJ&amp;pagesize=100&amp;sortby=pubdate&amp;citation_for_view=mRa-uLMAAAAJ:UebtZRa9Y70C" target="_blank" rel="noopener">Scholar</a>
+          </div>
+        </div>
+      </div>
+          
+        
+          
+          <div class="cite" data-kind="Journal" data-text="a 2.5 v in‐plane flexi‐pseudocapacitor with unprecedented energy and cycling efficiency for all‐weather applications p thippeswamy, k samanta, v arya, d biswas, hs kim, c bakli, hy jung, ... small 20 (34), 2400975, 2024">
+        <div class="no">[13]</div>
+        <div>
+          <span class="a">P Thippeswamy, K Samanta, <strong>V Arya</strong>, D Biswas, HS Kim, C Bakli, HY Jung, ... (2024).</span>
+          <span class="t">A 2.5 V In‐Plane Flexi‐Pseudocapacitor with Unprecedented Energy and Cycling Efficiency for All‐Weather Applications.</span>
+          
+          <span class="v"><i>Small 20 (34)</i>, 2400975.</span>
+          <div class="meta">
+            <span class="kind">Journal</span>
+            <span>Cited by 12</span>
+            <a href="https://doi.org/10.1002/smll.202400975" target="_blank" rel="noopener">DOI</a>
+            <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=mRa-uLMAAAAJ&amp;pagesize=100&amp;sortby=pubdate&amp;citation_for_view=mRa-uLMAAAAJ:hqOjcs7Dif8C" target="_blank" rel="noopener">Scholar</a>
+          </div>
+        </div>
+      </div>
+          
+        
+          
+          <div class="cite" data-kind="Conference" data-text="physics informed neural network based modelling of microchannel flow dynamics v arya, a roy, a shajith, c bakli aps division of fluid dynamics meeting abstracts, t18. 001, 2024">
+        <div class="no">[12]</div>
+        <div>
+          <span class="a"><strong>V Arya</strong>, A Roy, A Shajith, C Bakli (2024).</span>
+          <span class="t">Physics Informed Neural Network based Modelling of Microchannel Flow Dynamics.</span>
+          
+          <span class="v"><i>APS Division of Fluid Dynamics Meeting Abstracts</i>, T18. 001.</span>
+          <div class="meta">
+            <span class="kind">Conference · abstract</span>
+            
+            
+            <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=mRa-uLMAAAAJ&amp;pagesize=100&amp;sortby=pubdate&amp;citation_for_view=mRa-uLMAAAAJ:MXK_kJrjxJIC" target="_blank" rel="noopener">Scholar</a>
+          </div>
+        </div>
+      </div>
+          
+        
+          </div><div class="ygroup"><div class="yr">2023</div>
+          <div class="cite" data-kind="Journal" data-text="mapping fluid structuration to flow enhancement in nanofluidic channels a agarwal, v arya, b golani, c bakli, s chakraborty the journal of chemical physics 158 (21), 2023">
+        <div class="no">[11]</div>
+        <div>
+          <span class="a">A Agarwal, <strong>V Arya</strong>, B Golani, C Bakli, S Chakraborty (2023).</span>
+          <span class="t">Mapping fluid structuration to flow enhancement in nanofluidic channels.</span>
+          
+          <span class="v"><i>The Journal of Chemical Physics 158 (21)</i>.</span>
+          <div class="meta">
+            <span class="kind">Journal</span>
+            <span>Cited by 25</span>
+            <a href="https://doi.org/10.1063/5.0140765" target="_blank" rel="noopener">DOI</a>
+            <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=mRa-uLMAAAAJ&amp;pagesize=100&amp;sortby=pubdate&amp;citation_for_view=mRa-uLMAAAAJ:_FxGoFyzp5QC" target="_blank" rel="noopener">Scholar</a>
+          </div>
+        </div>
+      </div>
+          
+        
+          
+          <div class="cite" data-kind="Journal" data-text="significantly reduced thermal conductivity and enhanced thermoelectric performance of twisted bilayer graphene n kumar, a chaudhuri, v arya, c bakli, c bera journal of applied physics 134 (4), 2023">
+        <div class="no">[10]</div>
+        <div>
+          <span class="a">N Kumar, A Chaudhuri, <strong>V Arya</strong>, C Bakli, C Bera (2023).</span>
+          <span class="t">Significantly reduced thermal conductivity and enhanced thermoelectric performance of twisted bilayer graphene.</span>
+          
+          <span class="v"><i>Journal of Applied Physics 134 (4)</i>.</span>
+          <div class="meta">
+            <span class="kind">Journal</span>
+            <span>Cited by 20</span>
+            <a href="https://doi.org/10.1063/5.0153052" target="_blank" rel="noopener">DOI</a>
+            <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=mRa-uLMAAAAJ&amp;pagesize=100&amp;sortby=pubdate&amp;citation_for_view=mRa-uLMAAAAJ:LkGwnXOMwfcC" target="_blank" rel="noopener">Scholar</a>
+          </div>
+        </div>
+      </div>
+          
+        
+          
+          <div class="cite" data-kind="Journal" data-text="coupled effect of variable wettability and body force on fluid flow through nanochannels: a multiscale approach a chaudhuri, v arya, c bakli computational thermal sciences: an international journal 15 (2), 2023">
+        <div class="no">[9]</div>
+        <div>
+          <span class="a">A Chaudhuri, <strong>V Arya</strong>, C Bakli (2023).</span>
+          <span class="t">Coupled Effect of Variable Wettability and Body Force on Fluid Flow through Nanochannels: A Multiscale Approach.</span>
+          
+          <span class="v"><i>Computational Thermal Sciences: An International Journal 15 (2)</i>.</span>
+          <div class="meta">
+            <span class="kind">Journal</span>
+            <span>Cited by 4</span>
+            <a href="https://doi.org/10.1615/ComputThermalScien.2022043262" target="_blank" rel="noopener">DOI</a>
+            <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=mRa-uLMAAAAJ&amp;pagesize=100&amp;sortby=pubdate&amp;citation_for_view=mRa-uLMAAAAJ:W7OEmFMy1HYC" target="_blank" rel="noopener">Scholar</a>
+          </div>
+        </div>
+      </div>
+          
+        
+          </div><div class="ygroup"><div class="yr">2022</div>
+          <div class="cite" data-kind="Journal" data-text="coupling solute interactions with functionalized graphene membranes: towards facile membrane-level engineering v arya, a chaudhuri, c bakli nanoscale 14 (44), 16661-16672, 2022">
+        <div class="no">[8]</div>
+        <div>
+          <span class="a"><strong>V Arya</strong>, A Chaudhuri, C Bakli (2022).</span>
+          <span class="t">Coupling solute interactions with functionalized graphene membranes: towards facile membrane-level engineering.</span>
+          
+          <span class="v"><i>Nanoscale 14 (44)</i>, 16661-16672.</span>
+          <div class="meta">
+            <span class="kind">Journal</span>
+            <span>Cited by 29</span>
+            <a href="https://doi.org/10.1039/d2nr05552j" target="_blank" rel="noopener">DOI</a>
+            <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=mRa-uLMAAAAJ&amp;pagesize=100&amp;sortby=pubdate&amp;citation_for_view=mRa-uLMAAAAJ:WF5omc3nYNoC" target="_blank" rel="noopener">Scholar</a>
+          </div>
+        </div>
+      </div>
+          
+        
+          
+          <div class="cite" data-kind="Conference" data-text="optimization of building façade for passive thermal management: a machine learning based simulation study for kolkata, india s chakraborty, v arya, ss ss, c bakli proceedings of the 9th acm international conference on systems for energy …, 2022">
+        <div class="no">[7]</div>
+        <div>
+          <span class="a">S Chakraborty, <strong>V Arya</strong>, SS SS, C Bakli (2022).</span>
+          <span class="t">Optimization of building façade for passive thermal management: a machine learning based simulation study for Kolkata, India.</span>
+          
+          <span class="v"><i>Proceedings of the 9th ACM International Conference on Systems for Energy …</i>.</span>
+          <div class="meta">
+            <span class="kind">Conference</span>
+            <span>Cited by 6</span>
+            <a href="https://doi.org/10.1145/3563357.3566139" target="_blank" rel="noopener">DOI</a>
+            <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=mRa-uLMAAAAJ&amp;pagesize=100&amp;sortby=pubdate&amp;citation_for_view=mRa-uLMAAAAJ:Se3iqnhoufwC" target="_blank" rel="noopener">Scholar</a>
+          </div>
+        </div>
+      </div>
+          
+        
+          
+          <div class="cite" data-kind="Journal" data-text="understanding the mechanics of complex topology of the 3d printed anthill architecture b kushwaha, a kumar, rs ambekar, v arya, sd negedu, d bakshi, ... oxford open materials science 2 (1), itac003, 2022">
+        <div class="no">[6]</div>
+        <div>
+          <span class="a">B Kushwaha, A Kumar, RS Ambekar, <strong>V Arya</strong>, SD Negedu, D Bakshi, ... (2022).</span>
+          <span class="t">Understanding the mechanics of complex topology of the 3D printed Anthill architecture.</span>
+          
+          <span class="v"><i>Oxford Open Materials Science 2 (1)</i>, itac003.</span>
+          <div class="meta">
+            <span class="kind">Journal</span>
+            <span>Cited by 5</span>
+            <a href="https://doi.org/10.1093/oxfmat/itac003" target="_blank" rel="noopener">DOI</a>
+            <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=mRa-uLMAAAAJ&amp;pagesize=100&amp;sortby=pubdate&amp;citation_for_view=mRa-uLMAAAAJ:eQOLeE2rZwMC" target="_blank" rel="noopener">Scholar</a>
+          </div>
+        </div>
+      </div>
+          
+        
+          
+          <div class="cite" data-kind="Conference" data-text="coupled effect of variable wettability and body force on fluid flow through nanochannels: a multiscale approach  proceeding of proceedings of the 26thnational and 4th international ishmt-astfe heat and mass transfer conference december 17-20, 2021, iit madras, chennai-600036, tamil nadu, india">
+        <div class="no">[5]</div>
+        <div>
+          
+          <span class="t">Coupled Effect of Variable Wettability and Body Force on Fluid Flow through Nanochannels: A Multiscale Approach.</span>
+          
+          <span class="v"><i>Proceeding of Proceedings of the 26thNational and 4th International ISHMT-ASTFE Heat and Mass Transfer Conference December 17-20</i>, 2021, IIT Madras, Chennai-600036, Tamil Nadu, India (2022).</span>
+          <div class="meta">
+            <span class="kind">Conference</span>
+            
+            <a href="https://doi.org/10.1615/ihmtc-2021.2120" target="_blank" rel="noopener">DOI</a>
+            
+          </div>
+        </div>
+      </div>
+          
+        
+          </div><div class="ygroup"><div class="yr">2021</div>
+          <div class="cite" data-kind="Conference" data-text="optimizing effectiveness of double pipe heat exchanger using nanofluid and different porous fins arrangement a kumar, v arya, c bakli asme power conference 85109, v001t04a001, 2021">
+        <div class="no">[4]</div>
+        <div>
+          <span class="a">A Kumar, <strong>V Arya</strong>, C Bakli (2021).</span>
+          <span class="t">Optimizing Effectiveness of Double Pipe Heat Exchanger Using Nanofluid and Different Porous Fins Arrangement.</span>
+          
+          <span class="v"><i>ASME Power Conference 85109</i>, V001T04A001.</span>
+          <div class="meta">
+            <span class="kind">Conference</span>
+            <span>Cited by 11</span>
+            <a href="https://doi.org/10.1115/POWER2021-64248" target="_blank" rel="noopener">DOI</a>
+            <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=mRa-uLMAAAAJ&amp;pagesize=100&amp;sortby=pubdate&amp;citation_for_view=mRa-uLMAAAAJ:9yKSN-GCB0IC" target="_blank" rel="noopener">Scholar</a>
+          </div>
+        </div>
+      </div>
+          
+        
+          
+          <div class="cite" data-kind="Conference" data-text="decoding the alteration of thermal conductivity of nanofluids from molecular perspective a kumar, v arya, c bakli proceedings of the 26thnational and 4th international ishmt-astfe heat and …, 2021">
+        <div class="no">[3]</div>
+        <div>
+          <span class="a">A Kumar, <strong>V Arya</strong>, C Bakli (2021).</span>
+          <span class="t">DECODING THE ALTERATION OF THERMAL CONDUCTIVITY OF NANOFLUIDS FROM MOLECULAR PERSPECTIVE.</span>
+          
+          <span class="v"><i>Proceedings of the 26thNational and 4th International ISHMT-ASTFE Heat and …</i>.</span>
+          <div class="meta">
+            <span class="kind">Conference · poster</span>
+            <span>Cited by 7</span>
+            <a href="https://doi.org/10.1615/ihmtc-2021.2140" target="_blank" rel="noopener">DOI</a>
+            <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=mRa-uLMAAAAJ&amp;pagesize=100&amp;sortby=pubdate&amp;citation_for_view=mRa-uLMAAAAJ:Y0pCki6q_DkC" target="_blank" rel="noopener">Scholar</a>
+          </div>
+        </div>
+      </div>
+          
+        
+          
+          <div class="cite" data-kind="Conference" data-text="effect of steric inclusions in ion concentration polarization (icp) based preconcentration  2nd international conference on fluids under confinement">
+        <div class="no">[2]</div>
+        <div>
+          
+          <span class="t">Effect of Steric Inclusions in Ion Concentration Polarization (ICP) based Preconcentration.</span>
+          
+          <span class="v"><i>2nd International Conference on Fluids Under Confinement</i> (2021).</span>
+          <div class="meta">
+            <span class="kind">Conference · poster</span>
+            
+            
+            
+          </div>
+        </div>
+      </div>
+          
+        
+          </div><div class="ygroup"><div class="yr">2019</div>
+          <div class="cite" data-kind="Patent" data-text="storage based solar cooker with sensor-less dual axis tracking cb jayant agarwal, khusraj khaddeo, vinay arya in patent 319066-001, 2019">
+        <div class="no">[1]</div>
+        <div>
+          <span class="a">CB Jayant Agarwal, Khusraj Khaddeo, <strong>Vinay Arya</strong> (2019).</span>
+          <span class="t">STORAGE BASED SOLAR COOKER WITH SENSOR-LESS DUAL AXIS TRACKING.</span>
+          
+          <span class="v"><i>IN Patent 319066-001</i>.</span>
+          <div class="meta">
+            <span class="kind">Patent</span>
+            
+            
+            <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=mRa-uLMAAAAJ&amp;pagesize=100&amp;sortby=pubdate&amp;citation_for_view=mRa-uLMAAAAJ:u-x6o8ySG0sC" target="_blank" rel="noopener">Scholar</a>
+          </div>
+        </div>
+      </div>
+          </div>
+        
+        <p class="none">No publications match your search.</p>
+      
+    </section>
+
+    
+  </main>
+
+  <footer>
+    <span>Dr. Vinay Arya, IIT Kharagpur</span>
+    <span>Publications via Google Scholar &amp; ORCID · updated 2026-11-02</span>
+  </footer>
+</div>
+
+<div class="tip" id="tip"></div>
+<script>
+(function () {
+  var tabs = document.querySelectorAll(".tabs button"), search = document.querySelector(".search"), kind = "all";
+  function apply() {
+    var q = (search && search.value || "").trim().toLowerCase(), shown = 0;
+    document.querySelectorAll(".ygroup").forEach(function (g) {
+      var any = false;
+      g.querySelectorAll(".cite").forEach(function (c) {
+        var ok = (kind === "all" || c.dataset.kind === kind) && (!q || c.dataset.text.indexOf(q) !== -1);
+        c.style.display = ok ? "" : "none"; if (ok) { any = true; shown++; }
+      });
+      g.style.display = any ? "" : "none";
+    });
+    var none = document.querySelector(".none"); if (none) none.style.display = shown ? "none" : "block";
+  }
+  tabs.forEach(function (b) { b.addEventListener("click", function () { tabs.forEach(function (x) { x.classList.remove("on"); }); b.classList.add("on"); kind = b.dataset.kind; apply(); }); });
+  if (search) search.addEventListener("input", apply);
+  var tip = document.getElementById("tip");
+  document.querySelectorAll(".chart .hit").forEach(function (r) {
+    r.addEventListener("mousemove", function (e) { tip.textContent = r.dataset.tip; tip.style.left = (e.clientX + 12) + "px"; tip.style.top = (e.clientY - 26) + "px"; tip.style.opacity = 1; });
+    r.addEventListener("mouseleave", function () { tip.style.opacity = 0; });
+  });
+  var links = document.querySelectorAll(".topbar nav a");
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) links.forEach(function (a) { a.classList.toggle("active", a.getAttribute("href") === "#" + e.target.id); }); }); }, { rootMargin: "-35% 0px -60% 0px" });
+    links.forEach(function (a) { var s = document.querySelector(a.getAttribute("href")); if (s) io.observe(s); });
+  }
+})();
+</script>
+</body>
+</html>
