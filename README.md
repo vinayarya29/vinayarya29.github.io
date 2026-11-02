@@ -1,0 +1,21 @@
+# vinayarya29.github.io
+
+Personal academic website of Dr. Vinay Arya (IIT Kharagpur), served by GitHub Pages
+and embedded page-by-page in Google Sites (https://sites.google.com/view/vinayarya).
+
+| File | Page | Google Sites page that embeds it |
+|---|---|---|
+| `index.html` | Home | `/home` |
+| `research.html` | Research | `/research` |
+| `publications.html` | Publications | `/publications` |
+| `teaching.html` | Teaching & CV | `/teaching` |
+
+- `assets/site.css`: shared design (colours, layout, components).
+- `assets/site.js`: shared behaviour. The `NAV` list at the top holds menu names and the
+  matching Google Sites addresses. When a page is embedded in Google Sites it hides its own
+  top bar and opens email, phone and page links in a new tab, because the Google Sites
+  embed frame blocks links that try to take over the whole window.
+- `images/`: photo and research figures (taken from the synopsis/thesis slides).
+
+To update: edit the files, then `git commit` and `git push`. GitHub Pages republishes in
+about a minute, and the Google Sites embeds follow (hard refresh, up to ~10 minutes).
