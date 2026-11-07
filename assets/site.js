@@ -1,5 +1,5 @@
 /* Shared by every page.
- * Opened directly (vinayarya29.github.io): shows its own top bar; links move
+ * Opened directly (www.vinayarya.in): shows its own top bar; links move
  *   between the GitHub pages.
  * Embedded in Google Sites: hides the top bar (Google Sites supplies the menu).
  *   The embed frame is sandboxed without top-navigation, so links to my other
@@ -20,7 +20,7 @@
   // Visitor counts (GoatCounter: free, no cookies, no personal data). Counting starts once the
   // account "vinayarya" exists at https://www.goatcounter.com — until then the request just fails quietly.
   var GOATCOUNTER = "https://vinayarya.goatcounter.com/count";
-  if (/\.github\.io$/.test(location.hostname)) {
+  if (/(\.github\.io|vinayarya\.in)$/.test(location.hostname)) {
     var gc = document.createElement("script");
     gc.async = true; gc.src = "https://gc.zgo.at/count.js"; gc.setAttribute("data-goatcounter", GOATCOUNTER);
     gc.setAttribute("data-goatcounter-settings", '{"allow_frame": true}');  // count visits through the Google Sites embeds too
@@ -43,7 +43,7 @@
     // Needs GoatCounter → Settings → "Allow adding visitor counts on your website". If that's off
     // (403) or the request fails, nothing is shown.
     var foot = document.querySelector("footer");
-    if (foot && window.fetch && /\.github\.io$/.test(location.hostname)) {
+    if (foot && window.fetch && /(\.github\.io|vinayarya\.in)$/.test(location.hostname)) {
       fetch("https://vinayarya.goatcounter.com/counter/TOTAL.json")
         .then(function (r) { return r.ok ? r.json() : null; })
         .then(function (j) {

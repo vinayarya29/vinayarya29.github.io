@@ -1,6 +1,7 @@
-# vinayarya29.github.io
+# www.vinayarya.in (repo vinayarya29.github.io)
 
-Personal academic website of Dr. Vinay Arya (IIT Kharagpur), served by GitHub Pages
+Personal academic website of Dr. Vinay Arya (IIT Kharagpur), served by GitHub Pages at
+https://www.vinayarya.in (custom domain: `CNAME` file; GoDaddy forwards vinayarya.in → www)
 and embedded page-by-page in Google Sites (https://sites.google.com/view/vinayarya).
 
 | File | Page | Google Sites page that embeds it |
