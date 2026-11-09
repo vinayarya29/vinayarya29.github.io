@@ -56,6 +56,13 @@
         .catch(function () {});
     }
 
+    // ---- small "Admin" link in the footer (not inside the Google Sites embeds) ----
+    if (foot && !embedded && foot.firstElementChild) {
+      var ad = document.createElement("a"); ad.href = "admin.html"; ad.className = "adm-link"; ad.textContent = "Admin";
+      ad.rel = "nofollow";
+      foot.firstElementChild.appendChild(document.createTextNode(" · ")); foot.firstElementChild.appendChild(ad);
+    }
+
     // ---- navigation -------------------------------------------------------
     var bar = document.getElementById("topbar");
     if (bar && !embedded) {

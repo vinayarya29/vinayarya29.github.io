@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin | Dr. Vinay Arya</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231d3b78'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' font-weight='600' fill='white' text-anchor='middle'%3EVA%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  body { background: var(--page); }
+  .adm { max-width: 900px; margin: 0 auto; padding: 0 28px 60px; font-family: var(--sans); color: var(--text); }
+  .adm .top { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; padding: 30px 0 4px; }
+  .adm h1 { font-family: var(--serif); margin: 0; font-size: 1.7em; }
+  .adm .top a { font-size: .9em; }
+  .adm section { padding: 26px 0 6px; }
+  .adm h2 { font-size: 1.25em; margin: 0 0 6px; }
+  .adm .hint { color: var(--muted); font-size: .88em; margin: 0 0 14px; }
+  .adm label { display: block; font-size: .76em; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 12px 0 4px; }
+  .adm input[type=text], .adm input[type=password], .adm textarea { width: 100%; box-sizing: border-box; font: inherit; font-size: .94em; padding: 9px 12px; border: 1px solid var(--rule); border-radius: 9px; background: var(--card); color: var(--text); }
+  .adm textarea { min-height: 90px; resize: vertical; }
+  .adm .row { display: grid; grid-template-columns: 10em minmax(0, 1fr); gap: 12px; }
+  .adm .actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 14px; }
+  .adm button { font: inherit; font-size: .9em; font-weight: 600; padding: 8px 16px; border-radius: 999px; border: 1px solid var(--rule); background: var(--card); color: var(--accent); cursor: pointer; }
+  .adm button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .adm button.danger { color: #b3261e; }
+  .adm button:disabled { opacity: .45; cursor: default; }
+  .adm .box { background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius); box-shadow: var(--shadow); padding: 18px 20px; }
+  .adm .items { list-style: none; margin: 0; padding: 0; background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius); overflow: hidden; }
+  .adm .items li { display: grid; grid-template-columns: 7em minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 10px 14px; border-bottom: 1px solid var(--rule); font-size: .92em; }
+  .adm .items li:last-child { border-bottom: none; }
+  .adm .items li.off { opacity: .55; }
+  .adm .items time { font-weight: 700; color: var(--accent-2); font-size: .85em; }
+  .adm .items .sub { color: var(--muted); font-size: .9em; }
+  .adm .items .ops { display: flex; gap: 4px; }
+  .adm .items .ops button { padding: 3px 9px; font-size: .8em; }
+  .adm .status { font-size: .88em; color: var(--muted); }
+  .adm .status.ok { color: #1b7a43; } .adm .status.err { color: #b3261e; }
+  .adm ol.steps { padding-left: 1.2em; color: var(--soft); font-size: .92em; }
+  .adm ol.steps li { margin: 4px 0; }
+  .adm #locked .box { max-width: 620px; }
+  @media (max-width: 700px) { .adm { padding: 0 16px 40px; } .adm .row, .adm .items li { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<main class="adm">
+<div class="top"><h1>Website admin</h1><a href="./">← View site</a></div>
+<p class="hint" style="font-size:.95em">Changes are saved to the website's GitHub repository and go live about 2–3 minutes later.</p>
+
+<!-- ---------------- sign in ---------------- -->
+<section id="locked">
+  <div class="box" id="pw-card">
+    <h2>Admin password</h2>
+    <label for="pw">Password</label>
+    <input type="password" id="pw" autocomplete="current-password">
+    <div class="actions"><button class="primary" id="pw-go">Open admin</button><span class="status" id="pw-status"></span></div>
+    <p class="hint" style="margin-top:16px"><a href="#" id="show-setup">Set up or change the password</a></p>
+  </div>
+
+  <div class="box" id="setup-card" hidden>
+    <h2>Set up the admin password (one time)</h2>
+    <p class="hint">This needs a GitHub token once. The token is encrypted with the password you choose and stored on the site; after that only the password is needed.</p>
+    <ol class="steps">
+      <li>Open <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">GitHub → New fine-grained token</a>. Choose an expiry (e.g. 1 year).</li>
+      <li><b>Repository access</b>: Only select repositories → <code>vinayarya29/vinayarya29.github.io</code>.</li>
+      <li><b>Permissions</b>: Contents → Read and write.</li>
+      <li>Generate, copy and paste it below, then choose a password.</li>
+    </ol>
+    <label for="tok">GitHub token</label>
+    <input type="password" id="tok" autocomplete="off" placeholder="github_pat_…">
+    <label for="newpw">New admin password</label>
+    <input type="password" id="newpw" autocomplete="new-password">
+    <label for="newpw2">Repeat password</label>
+    <input type="password" id="newpw2" autocomplete="new-password">
+    <div class="actions"><button class="primary" id="setup-go">Save password</button><button id="hide-setup">Cancel</button><span class="status" id="setup-status"></span></div>
+  </div>
+</section>
+
+<div id="unlocked" hidden>
+<p class="status" id="who" style="margin-top:18px"></p>
+
+<!-- ---------------- news ---------------- -->
+<section id="news">
+  <h2>News (Home page)</h2>
+  <p class="hint">Sorted by date, newest first; the latest 5 appear on Home (faded items are not shown). Use <code>**bold**</code> and <code>*italic*</code>. Press <b>Edit</b> to change an item. The same list is used by LabNotebook.</p>
+  <ul class="items" id="news-list"></ul>
+  <div class="box" style="margin-top:14px">
+    <div class="row"><div><label for="n-when">When</label><input type="text" id="n-when" placeholder="Nov 2026 or 2026"></div>
+    <div><label for="n-title">Heading (optional)</label><input type="text" id="n-title" placeholder="Joined TeNSorE Lab as a postdoctoral fellow"></div></div>
+    <label for="n-text">Details</label><textarea id="n-text" placeholder="Started as a **Postdoctoral Research Fellow** with Prof. Chirodeep Bakli …"></textarea>
+    <label for="n-link">“Read more” link (optional)</label><input type="text" id="n-link" placeholder="https://…">
+    <div class="actions"><button class="primary" id="n-add">Add news</button><button id="n-cancel" hidden>Cancel edit</button><span class="status" id="n-status"></span></div>
+  </div>
+</section>
+
+<!-- ---------------- linkedin ---------------- -->
+<section id="li">
+  <h2>LinkedIn posts (Talks &amp; Outreach page)</h2>
+  <p class="hint">Posts where IIT Kharagpur, the department, your supervisor or others highlight your work. Shown in this order under “Highlighted on LinkedIn”. On LinkedIn open the post → “…” → <b>Copy link to post</b> (or <b>Embed this post</b> → copy the code) and paste it here.</p>
+  <ul class="items" id="li-list"></ul>
+  <div class="box" style="margin-top:14px">
+    <label for="li-in">Post link or embed code</label>
+    <input type="text" id="li-in" placeholder="https://www.linkedin.com/posts/iit-kharagpur_…-activity-7…">
+    <label for="li-by">Caption under the post (optional)</label>
+    <input type="text" id="li-by" placeholder="Shared by the School of Energy Science and Engineering, IIT Kharagpur">
+    <div class="actions"><button class="primary" id="li-add">Add post</button><button id="li-cancel" hidden>Cancel edit</button><span class="status" id="li-status"></span></div>
+  </div>
+</section>
+
+<section>
+  <div class="actions"><a href="https://github.com/vinayarya29/vinayarya29.github.io/actions" target="_blank" rel="noopener">Build status ↗</a><button id="signout" class="danger">Lock admin</button></div>
+</section>
+</div>
+</main>
+<script src="assets/admin.js"></script>
+</body>
+</html>

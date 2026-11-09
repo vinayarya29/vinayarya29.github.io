@@ -1,0 +1,44 @@
+[
+ {
+  "id": 7,
+  "when": "2026-06",
+  "text": "Successfully **defended my PhD** (viva-voce) at IIT Kharagpur, supervised by Prof. Chirodeep Bakli.",
+  "link": "https://www.vinayarya.in/talks.html"
+ },
+ {
+  "id": 3,
+  "when": "2026-02",
+  "text": "Submitted my **PhD thesis**, *Transport control under confinement*, supervised by Prof. Chirodeep Bakli.",
+  "link": ""
+ },
+ {
+  "id": 2,
+  "when": "2026",
+  "text": "Physics-informed machine learning for graphene desalination membranes published in *Desalination*.",
+  "link": "https://doi.org/10.1016/j.desal.2025.119824"
+ },
+ {
+  "id": 1,
+  "when": "2026",
+  "text": "Two papers on **hydrogel passive cooling**, in *Solar RRL* and *Advanced Sustainable Systems*, both featured on the **journal covers**.",
+  "link": "https://www.vinayarya.in/talks.html"
+ },
+ {
+  "id": 4,
+  "when": "2025-12",
+  "text": "Presented my PhD **synopsis seminar** at IIT Kharagpur.",
+  "link": ""
+ },
+ {
+  "id": 5,
+  "when": "2025",
+  "text": "Our graphene-based oil–water separation work, led by Prof. Chirodeep Bakli, made the **front page of The Times of India** (Kolkata).",
+  "link": "https://www.vinayarya.in/talks.html"
+ },
+ {
+  "id": 6,
+  "when": "2024-08",
+  "text": "Our oil–water separation work made the **cover of *Nanoscale*** (vol. 16, issue 29).",
+  "link": "https://doi.org/10.1039/D4NR01235F"
+ }
+]
